@@ -36,12 +36,18 @@ public:
 
     void OpenScore(CString&);
 
+    
+
 private:
     int		m_channels;
     double	m_sampleRate;
     double	m_samplePeriod;
     double m_time;
     std::list<CInstrument*>  m_instruments;
+    void XmlLoadScore(IXMLDOMNode* xml);
+    double  m_bpm;                  //!< Beats per minute
+    int     m_beatspermeasure;  //!< Beats per measure
+    double  m_secperbeat;        //!< Seconds per beat
 };
 
 #pragma comment(lib, "msxml2.lib")
