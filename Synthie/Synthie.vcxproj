@@ -172,10 +172,12 @@
     <ClInclude Include="ToneInstrument.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="res\score1.bin" />
     <None Include="res\Synthie.ico" />
     <None Include="res\Synthie.rc2" />
     <None Include="res\Toolbar.bmp" />
     <None Include="res\Toolbar256.bmp" />
+    <None Include="test1.score" />
     <None Include="UserImages.bmp" />
   </ItemGroup>
   <ItemGroup>

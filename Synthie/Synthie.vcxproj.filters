@@ -148,6 +148,10 @@
     <None Include="UserImages.bmp">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="res\score1.bin">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="test1.score" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Synthie.rc">

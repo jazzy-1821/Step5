@@ -17,19 +17,22 @@
 #define IDR_SynthieTYPE                 130
 #define IDD_PROGRESS_DLG                131
 #define IDS_EDIT_MENU                   306
+#define IDR_SCORE2                      311
+#define IDR_SCORE                       311
 #define IDC_PROGRESS                    1000
 #define IDC_STOP                        1001
 #define ID_GENERATE_FILEOUTPUT          32771
 #define ID_GENERATE_AUDIOOUTPUT         32772
 #define ID_GENERATE_1000HZTONE          32773
 #define ID_GENERATE_SYNTHESIZER         32774
+#define ID_FILE_OPENSCORE               32775
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        310
-#define _APS_NEXT_COMMAND_VALUE         32775
+#define _APS_NEXT_RESOURCE_VALUE        312
+#define _APS_NEXT_COMMAND_VALUE         32776
 #define _APS_NEXT_CONTROL_VALUE         1002
 #define _APS_NEXT_SYMED_VALUE           310
 #endif

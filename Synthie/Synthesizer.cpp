@@ -4,6 +4,8 @@
 
 CSynthesizer::CSynthesizer() 
 {
+    CoInitialize(NULL);
+
 	m_channels = 2;
 	m_sampleRate = 44100.;
 	m_samplePeriod = 1 / m_sampleRate;
@@ -86,4 +88,14 @@ bool CSynthesizer::Generate(double *frame)
     // We are done when there is nothing to play.  We'll put something more 
     // complex here later.
     return !m_instruments.empty();
+}
+
+void CSynthesizer::Clear(void)
+{
+    m_instruments.clear();
+}
+
+void CSynthesizer::OpenScore(CString& filename)
+{
+
 }

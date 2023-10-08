@@ -1,4 +1,5 @@
 #pragma once
+#include "msxml2.h"
 #include <list>
 #include "Instrument.h"
 
@@ -31,6 +32,10 @@ public:
     //! Get the time since we started generating audio
     double GetTime() { return m_time; }
 
+    void Clear();
+
+    void OpenScore(CString&);
+
 private:
     int		m_channels;
     double	m_sampleRate;
@@ -38,4 +43,6 @@ private:
     double m_time;
     std::list<CInstrument*>  m_instruments;
 };
+
+#pragma comment(lib, "msxml2.lib")
 

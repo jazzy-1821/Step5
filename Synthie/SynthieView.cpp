@@ -45,6 +45,7 @@ BEGIN_MESSAGE_MAP(CSynthieView, CWnd)
 	ON_UPDATE_COMMAND_UI(ID_GENERATE_AUDIOOUTPUT, &CSynthieView::OnUpdateGenerateAudiooutput)
 	ON_COMMAND(ID_GENERATE_1000HZTONE, &CSynthieView::OnGenerate1000hztone)
 	ON_COMMAND(ID_GENERATE_SYNTHESIZER, &CSynthieView::OnGenerateSynthesizer)
+	ON_COMMAND(ID_FILE_OPENSCORE, &CSynthieView::OnFileOpenscore)
 END_MESSAGE_MAP()
 
 
@@ -246,4 +247,16 @@ void CSynthieView::OnGenerateSynthesizer()
 
 	// Call to close the generator output
 	GenerateEnd();
+}
+
+
+void CSynthieView::OnFileOpenscore()
+{
+	static WCHAR BASED_CODE szFilter[] = L"Score files (*.score)|*.score|All Files (*.*)|*.*||";
+
+	CFileDialog dlg(TRUE, L".score", NULL, 0, szFilter, NULL);
+	if (dlg.DoModal() != IDOK)
+		return;
+
+	m_synthesizer.OpenScore(dlg.GetPathName());
 }

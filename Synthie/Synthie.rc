@@ -122,6 +122,7 @@ BEGIN
     POPUP "&File"
     BEGIN
         MENUITEM "E&xit",                       ID_APP_EXIT
+        MENUITEM "Open Score",                  ID_FILE_OPENSCORE
     END
     POPUP "&Generate"
     BEGIN
@@ -266,6 +267,14 @@ BEGIN
     END
 END
 #endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// SCORE
+//
+
+IDR_SCORE               SCORE                   "test1.score"
 
 
 /////////////////////////////////////////////////////////////////////////////
