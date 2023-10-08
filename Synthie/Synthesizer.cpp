@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "Synthesizer.h"
 #include "ToneInstrument.h"
+#include "../xmlhelp.h"
 
 CSynthesizer::CSynthesizer() 
 {
@@ -97,5 +98,41 @@ void CSynthesizer::Clear(void)
 
 void CSynthesizer::OpenScore(CString& filename)
 {
+    Clear();
 
+    //
+    // Create an XML document
+    //
+
+    CComPtr<IXMLDOMDocument>  pXMLDoc;
+    bool succeeded = SUCCEEDED(CoCreateInstance(CLSID_DOMDocument, NULL, CLSCTX_INPROC_SERVER,
+        IID_IXMLDOMDocument, (void**)&pXMLDoc));
+    if (!succeeded)
+    {
+        AfxMessageBox(L"Failed to create an XML document to use");
+        return;
+    }
+
+    // Open the XML document
+    VARIANT_BOOL ok;
+    succeeded = SUCCEEDED(pXMLDoc->load(CComVariant(filename), &ok));
+    if (!succeeded || ok == VARIANT_FALSE)
+    {
+        AfxMessageBox(L"Failed to open XML score file");
+        return;
+    }
+
+    //
+    // Traverse the XML document in memory!!!!
+    // Top level tag is <score>
+    //
+
+    CComPtr<IXMLDOMNode> node;
+    pXMLDoc->get_firstChild(&node);
+    for (; node != NULL; NextNode(node))
+    {
+        // Get the name of the node
+        CComBSTR nodeName;
+        node->get_nodeName(&nodeName);
+    }
 }
