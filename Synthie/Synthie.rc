@@ -129,6 +129,7 @@ BEGIN
         MENUITEM "&Audio Output",               ID_GENERATE_AUDIOOUTPUT
         MENUITEM SEPARATOR
         MENUITEM "&1000Hz Tone",                ID_GENERATE_1000HZTONE
+        MENUITEM "Synthesizer",                 ID_GENERATE_SYNTHESIZER
     END
     POPUP "&Edit"
     BEGIN

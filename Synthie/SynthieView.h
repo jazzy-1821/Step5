@@ -62,5 +62,7 @@ public:
 	afx_msg void OnGenerate1000hztone();
 private:
 	CSynthesizer m_synthesizer;
+public:
+	afx_msg void OnGenerateSynthesizer();
 };
 

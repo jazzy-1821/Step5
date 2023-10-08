@@ -44,6 +44,7 @@ BEGIN_MESSAGE_MAP(CSynthieView, CWnd)
 	ON_COMMAND(ID_GENERATE_AUDIOOUTPUT, &CSynthieView::OnGenerateAudiooutput)
 	ON_UPDATE_COMMAND_UI(ID_GENERATE_AUDIOOUTPUT, &CSynthieView::OnUpdateGenerateAudiooutput)
 	ON_COMMAND(ID_GENERATE_1000HZTONE, &CSynthieView::OnGenerate1000hztone)
+	ON_COMMAND(ID_GENERATE_SYNTHESIZER, &CSynthieView::OnGenerateSynthesizer)
 END_MESSAGE_MAP()
 
 
@@ -219,3 +220,30 @@ void CSynthieView::OnUpdateGenerateAudiooutput(CCmdUI *pCmdUI)
 	pCmdUI->SetCheck(m_audiooutput);	
 }
 
+
+
+void CSynthieView::OnGenerateSynthesizer()
+{
+	// Call to open the generator output
+	if (!GenerateBegin())
+		return;
+
+	m_synthesizer.Start();
+	short audio[2];
+	double frame[2];
+
+	while (m_synthesizer.Generate(frame))
+	{
+		audio[0] = RangeBound(frame[0] * 32767);
+		audio[1] = RangeBound(frame[1] * 32767);
+
+		GenerateWriteFrame(audio);
+
+		// The progress control
+		if (ProgressAbortCheck())
+			break;
+	}
+
+	// Call to close the generator output
+	GenerateEnd();
+}
