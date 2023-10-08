@@ -53,6 +53,10 @@ private:
 	int     m_beatspermeasure;	//!< Beats per measure
 	double  m_secperbeat;		//!< Seconds per beat
 
+	int m_currentNote;          //!< The current note we are playing
+	int m_measure;              //!< The current measure
+	double m_beat;              //!< The current beat within the measure
+
 	std::list<CInstrument*>  m_instruments;
 
 	std::vector<CNote> m_notes;
