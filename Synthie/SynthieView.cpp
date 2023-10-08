@@ -27,6 +27,9 @@ CSynthieView::CSynthieView()
 {
     m_audiooutput = true;
     m_fileoutput = false;
+
+	m_synthesizer.SetNumChannels(NumChannels());
+	m_synthesizer.SetSampleRate(SampleRate());
 }
 
 CSynthieView::~CSynthieView()

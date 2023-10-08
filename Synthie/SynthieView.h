@@ -9,6 +9,7 @@
 #include "audio/wave.h"
 #include "audio/DirSoundStream.h"	// Added by ClassView
 #include "audio/WaveformBuffer.h"
+#include "Synthesizer.h"
 
 
 // CSynthieView window
@@ -59,5 +60,7 @@ public:
 	afx_msg void OnGenerateAudiooutput();
 	afx_msg void OnUpdateGenerateAudiooutput(CCmdUI *pCmdUI);
 	afx_msg void OnGenerate1000hztone();
+private:
+	CSynthesizer m_synthesizer;
 };
 
