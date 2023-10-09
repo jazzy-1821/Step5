@@ -134,10 +134,10 @@
     <ClInclude Include="ToneInstrument.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\xmlhelp.h">
+    <ClInclude Include="Note.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Note.h">
+    <ClInclude Include="xmlhelp.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

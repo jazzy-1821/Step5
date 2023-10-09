@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "Note.h"
-#include "../xmlhelp.h"
+#include "xmlhelp.h"
 
 CNote::CNote(void)
 {

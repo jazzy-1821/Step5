@@ -5,8 +5,9 @@
 #include <vector>
 #include "Instrument.h"
 #include "Note.h"
-#include "../xmlhelp.h"
+#include "xmlhelp.h"
 #include <algorithm>
+#pragma comment(lib, "msxml2.lib")
 class CSynthesizer
 {
 public:

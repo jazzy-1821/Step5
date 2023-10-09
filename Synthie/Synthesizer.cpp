@@ -4,7 +4,7 @@
 #include <cmath>
 #include <string>
 #include "ToneInstrument.h"
-#include "../xmlhelp.h"
+#include "xmlhelp.h"
 
 
 using namespace std;
@@ -247,6 +247,7 @@ bool CSynthesizer::Generate(double* frame)
         if (instrument != NULL)
         {
             instrument->SetSampleRate(GetSampleRate());
+            instrument->SetNote(note);
             instrument->Start();
 
             m_instruments.push_back(instrument);
