@@ -25,9 +25,13 @@ public:
     //! Access one channel of a generated audio frame
     double Frame(int c) { return m_frame[c]; }
 
+    void SetBpm(double b) { m_bpm = b; }
+
+
 protected:
     double m_sampleRate;
     double m_samplePeriod;
     double m_frame[2];
+    double m_bpm;
 };
 

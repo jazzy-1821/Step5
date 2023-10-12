@@ -9,9 +9,15 @@ CToneInstrument::CToneInstrument()
 
 void CToneInstrument::Start()
 {
-	m_sinewave.SetSampleRate(GetSampleRate());
-	m_sinewave.Start();
-	m_time = 0;
+    m_sinewave.SetSampleRate(GetSampleRate());
+    m_sinewave.Start();
+    m_time = 0;
+
+    // Tell the AR object it gets its samples from 
+    // the sine wave object.
+    m_ar.SetSource(&m_sinewave);
+    m_ar.SetSampleRate(GetSampleRate());
+    m_ar.Start();
 }
 
 bool CToneInstrument::Generate()
@@ -60,8 +66,11 @@ void CToneInstrument::SetNote(CNote* note)
 
         if (name == "duration")
         {
+            //m_duration = (1 / (m_bpm / 60));
+
             value.ChangeType(VT_R8);
-            SetDuration(value.dblVal);
+            //SetDuration(value.dblVal);
+            m_ar.SetDuration(value.dblVal / (60.0 / m_bpm));
         }
         else if (name == "note")
         {

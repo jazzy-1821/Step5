@@ -249,6 +249,8 @@ bool CSynthesizer::Generate(double* frame)
             instrument->SetSampleRate(GetSampleRate());
             instrument->SetNote(note);
             instrument->Start();
+            instrument->SetBpm(m_bpm);
+
 
             m_instruments.push_back(instrument);
         }
