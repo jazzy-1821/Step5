@@ -29,6 +29,8 @@ public:
 	//! Set the sample rate
 	void SetSampleRate(double s) { m_sampleRate = s;  m_samplePeriod = 1.0 / s; }
 
+	double GetBpm() { return m_bpm; }
+
 
 	void Start(void);
 	bool Generate(double* frame);
