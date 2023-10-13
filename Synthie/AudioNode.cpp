@@ -9,3 +9,8 @@ CAudioNode::CAudioNode(void)
     m_sampleRate = 44100;
     m_samplePeriod = 1.0 / 44100.0;
 }
+
+
+CAudioNode::~CAudioNode()
+{
+}

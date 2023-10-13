@@ -4,6 +4,8 @@ class CAudioNode
 public:
 
     CAudioNode();
+  
+    ~CAudioNode();
     //! Start the node generation
     virtual void Start() = 0;
 
