@@ -134,6 +134,7 @@
     <ClCompile Include="audio\DirSoundStream.cpp" />
     <ClCompile Include="Instrument.cpp" />
     <ClCompile Include="Note.cpp" />
+    <ClCompile Include="PianoInstrument.cpp" />
     <ClCompile Include="SineWave.cpp" />
     <ClCompile Include="Synthesizer.cpp" />
     <ClCompile Include="MainFrm.cpp" />
@@ -159,6 +160,7 @@
     <ClInclude Include="audio\DirSoundStream.h" />
     <ClInclude Include="Instrument.h" />
     <ClInclude Include="Note.h" />
+    <ClInclude Include="PianoInstrument.h" />
     <ClInclude Include="SineWave.h" />
     <ClInclude Include="Synthesizer.h" />
     <ClInclude Include="MainFrm.h" />
