@@ -1,5 +1,8 @@
 #pragma once
-class Compression
+#include "Effects.h"
+
+class Compression:
+    public Effects
 {
 };
 

@@ -243,6 +243,9 @@ bool CSynthesizer::Generate(double* frame)
             instrument = new CToneInstrument();
         }
 
+        // PROJECT 1: THIS IS WHERE I WILL ADD ALL OF THE EFFECTS STUFF
+
+
         // Configure the instrument object
         if (instrument != NULL)
         {
@@ -331,6 +334,31 @@ bool CSynthesizer::Generate(double* frame)
         m_beat -= m_beatspermeasure;
         m_measure++;
     }
+    /*
+    // PROJECT 1
+    // EFFECTS COMPONENTS ADDED HERE
+    // Apply effects to the audio frame
+    for (int c = 0; c < GetNumChannels(); c++)
+    {
+        // Apply the effects in the desired order
+        double processedFrame = frame[c];
+
+        // Apply NoiseGate
+        processedFrame = m_noiseGate.Apply(processedFrame);
+
+        // Apply Compression
+        processedFrame = m_compression.Apply(processedFrame);
+
+        // Apply Reverb
+        processedFrame = m_reverb.Apply(processedFrame);
+
+        // Apply Flange
+        processedFrame = m_flange.Apply(processedFrame);
+
+        frame[c] = processedFrame;
+    }*/
+
+
     //
     // Phase 5: Determine when we are done
     //

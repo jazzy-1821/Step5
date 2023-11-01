@@ -1,5 +1,7 @@
 #pragma once
-class NoiseGate
+#include "Effects.h"
+
+class NoiseGate:
+    public Effects  // yahhh base class
 {
 };
-

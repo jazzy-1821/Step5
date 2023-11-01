@@ -5,6 +5,9 @@
 #include <vector>
 #include "Instrument.h"
 #include "Note.h"
+#include "Reverb.h"  // PROJECT 1
+#include "Compression.h"  // PROJECT 1
+#include "NoiseGate.h"  // PROJECT 1
 #include "xmlhelp.h"
 #include <algorithm>
 #pragma comment(lib, "msxml2.lib")
@@ -41,6 +44,11 @@ public:
 	void Clear(void);
 
 	void OpenScore(CString& filename);
+
+	// FIRST 3 EFFECTS FOR PROJECT 1
+	//NoiseGate m_noiseGate;
+	//Compression m_compression;
+	//Reverb m_reverb;
 
 private:
 	void XmlLoadScore(IXMLDOMNode* xml);
