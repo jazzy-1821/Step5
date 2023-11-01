@@ -3,5 +3,7 @@
 class Reverb :
     public Effects
 {
+    public:
+        double ApplyReverb(double inputSample);  // function to apply reverb
 };
 
