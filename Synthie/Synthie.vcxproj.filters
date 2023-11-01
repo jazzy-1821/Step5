@@ -90,6 +90,9 @@
     <ClCompile Include="NoiseGate.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Compression.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="audio\DirSound.h">
@@ -174,6 +177,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="NoiseGate.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Compression.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
