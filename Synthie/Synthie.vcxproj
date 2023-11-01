@@ -136,6 +136,7 @@
     <ClCompile Include="Note.cpp" />
     <ClCompile Include="PianoFactory.cpp" />
     <ClCompile Include="PianoInstrument.cpp" />
+    <ClCompile Include="Reverb.cpp" />
     <ClCompile Include="SineWave.cpp" />
     <ClCompile Include="Synthesizer.cpp" />
     <ClCompile Include="MainFrm.cpp" />
@@ -164,6 +165,7 @@
     <ClInclude Include="Note.h" />
     <ClInclude Include="PianoFactory.h" />
     <ClInclude Include="PianoInstrument.h" />
+    <ClInclude Include="Reverb.h" />
     <ClInclude Include="SineWave.h" />
     <ClInclude Include="Synthesizer.h" />
     <ClInclude Include="MainFrm.h" />
