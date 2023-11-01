@@ -133,6 +133,7 @@
     <ClCompile Include="audio\DirSoundSource.cpp" />
     <ClCompile Include="audio\DirSoundStream.cpp" />
     <ClCompile Include="Instrument.cpp" />
+    <ClCompile Include="NoiseGate.cpp" />
     <ClCompile Include="Note.cpp" />
     <ClCompile Include="PianoFactory.cpp" />
     <ClCompile Include="PianoInstrument.cpp" />
@@ -162,6 +163,7 @@
     <ClInclude Include="audio\DirSoundSource.h" />
     <ClInclude Include="audio\DirSoundStream.h" />
     <ClInclude Include="Instrument.h" />
+    <ClInclude Include="NoiseGate.h" />
     <ClInclude Include="Note.h" />
     <ClInclude Include="PianoFactory.h" />
     <ClInclude Include="PianoInstrument.h" />
