@@ -19,7 +19,7 @@ public:
 	bool LoadWaveFile(const char* filename);
 
 private:
-	//CWavePlayer m_wavePlayer;
+	CWavePlayer m_wavePlayer;
 	std::vector<short> m_wave;
 	std::vector<short> m_pedalWave;
 };

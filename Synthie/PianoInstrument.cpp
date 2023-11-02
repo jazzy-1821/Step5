@@ -14,7 +14,8 @@ CPianoInstrument::~CPianoInstrument()
 
 void CPianoInstrument::Start()
 {
-
+	m_wavePlayer.SetSampleRate(GetSampleRate());
+	m_wavePlayer.Start();
 }
 
 bool CPianoInstrument::Generate()
