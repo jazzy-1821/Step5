@@ -59,3 +59,13 @@ bool CPianoInstrument::LoadWaveFile(const char* filename)
 	return true;
 	return false;
 }
+
+bool CPianoInstrument::PedalDown()
+{
+	return false;
+}
+
+bool CPianoInstrument::PedalUp()
+{
+	return false;
+}
