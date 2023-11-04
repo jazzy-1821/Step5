@@ -62,10 +62,51 @@ bool CPianoInstrument::LoadWaveFile(const char* filename)
 
 bool CPianoInstrument::PedalDown()
 {
-	return false;
+	CDirSoundSource m_file;
+
+	char filename[] = "CompletePiano/pedald.wav";
+
+
+	if (!m_file.Open(filename))
+	{
+		CString msg = L"Unable to open audio file: ";
+		msg += filename;
+		AfxMessageBox(msg);
+		return false;
+	}
+
+	for (int i = 0; i < m_file.NumSampleFrames(); i++)
+	{
+		short frame[2];
+		m_file.ReadFrame(frame);
+		m_pedalWave.push_back(frame[0]);
+	}
+
+	m_file.Close();
+	return true;
 }
 
 bool CPianoInstrument::PedalUp()
 {
-	return false;
+	CDirSoundSource m_file;
+
+	char filename[] = "CompletePiano/pedalu.wav";
+
+	if (!m_file.Open(filename))
+	{
+		CString msg = L"Unable to open audio file: ";
+		msg += filename;
+		AfxMessageBox(msg);
+		return false;
+	}
+
+	for (int i = 0; i < m_file.NumSampleFrames(); i++)
+	{
+		short frame[2];
+		m_file.ReadFrame(frame);
+		m_pedalWave.push_back(frame[0]);
+	}
+
+	m_file.Close();
+	return true;
 }
