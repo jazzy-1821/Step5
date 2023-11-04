@@ -4,7 +4,10 @@
 
 CPianoInstrument::CPianoInstrument()
 {
-
+	m_attack = 0.05;
+	m_release = 0.25;
+	m_duration = 1.0;
+	m_pedal = false;
 }
 
 CPianoInstrument::~CPianoInstrument()
