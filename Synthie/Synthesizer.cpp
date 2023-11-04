@@ -243,6 +243,11 @@ bool CSynthesizer::Generate(double* frame)
             instrument = new CToneInstrument();
         }
 
+        else if (note->Instrument() == L"PianoInstrument")
+        {
+            m_pianoFactory.SetNote(note);
+            instrument = m_pianoFactory.CreateInstrument();
+        }
         // PROJECT 1: THIS IS WHERE I WILL ADD ALL OF THE EFFECTS STUFF
 
 

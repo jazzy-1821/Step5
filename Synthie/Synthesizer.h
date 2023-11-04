@@ -8,6 +8,7 @@
 #include "Reverb.h"  // PROJECT 1
 #include "Compression.h"  // PROJECT 1
 #include "NoiseGate.h"  // PROJECT 1
+#include "PianoFactory.h"
 #include "xmlhelp.h"
 #include <algorithm>
 #pragma comment(lib, "msxml2.lib")
@@ -67,6 +68,8 @@ private:
 	int m_currentNote;          //!< The current note we are playing
 	int m_measure;              //!< The current measure
 	double m_beat;              //!< The current beat within the measure
+
+	CPianoFactory m_pianoFactory;
 
 	std::list<CInstrument*>  m_instruments;
 
