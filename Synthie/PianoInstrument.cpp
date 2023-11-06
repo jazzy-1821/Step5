@@ -43,7 +43,6 @@ void CPianoInstrument::SetNote(CNote* note)
 	// Loop over the list of attributes
 	for (int i = 0; i < len; i++)
 	{
-		// Get attribute i
 		CComPtr<IXMLDOMNode> attrib;
 		attributes->get_item(i, &attrib);
 
@@ -51,11 +50,7 @@ void CPianoInstrument::SetNote(CNote* note)
 		CComBSTR name;
 		attrib->get_nodeName(&name);
 
-		// Get the value of the attribute.  A CComVariant is a variable
-		// that can have any type. It loads the attribute value as a
-		// string (UNICODE), but we can then change it to an integer 
-		// (VT_I4) or double (VT_R8) using the ChangeType function 
-		// and then read its integer or double value from a member variable.
+		// Get the value of the attribute
 		CComVariant value;
 		attrib->get_nodeValue(&value);
 

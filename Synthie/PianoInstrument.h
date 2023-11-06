@@ -24,7 +24,9 @@ public:
 	bool PedalDown();
 	bool PedalUp();
 
-	CWavePlayer* GetPlayer() { return &m_wavePlayer; }
+	CWavePlayer* GetWavePlayer() { return &m_wavePlayer; }
+
+	void ChangeDuration();
 
 private:
 	CWavePlayer m_wavePlayer;

@@ -76,7 +76,7 @@ void CPianoFactory::SetNote(CNote* note)
 				m_pedal = false;
 			}
 		}
-		else if (name == "keydynamic")
+		else if (name == "dynamic")
 		{
 			value.ChangeType(VT_R8);
 			m_volume = value.dblVal;
@@ -84,3 +84,5 @@ void CPianoFactory::SetNote(CNote* note)
 
 	}
 }
+
+

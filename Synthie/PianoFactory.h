@@ -10,6 +10,7 @@ public:
 	CPianoInstrument* CreateInstrument();
 	void SetNote(CNote* note);
 
+
 private:
 	double m_duration;
 	double m_volume;
@@ -17,5 +18,6 @@ private:
 	bool m_pedalUp;
 	bool m_pedalDown;
 
+	
 };
 
