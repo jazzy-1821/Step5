@@ -249,25 +249,22 @@ bool CSynthesizer::Generate(double* frame)
             m_pianoFactory.SetNote(note);
             instrument = m_pianoFactory.CreateInstrument();
         }
-        // PROJECT 1: THIS IS WHERE I WILL ADD ALL OF THE EFFECTS STUFF
 
-        // PHASE 1a: add effects
-        bool effects_send[] = { false, false, false, false};  // starts as false, set to true for each effect added in score
-                // order =  compress, noisegate, reverb, 4th effect
+        // PROJECT 1: THIS IS WHERE I WILL ADD ALL OF THE EFFECTS STUFF
         /*
         else if (note->Instrument() == L"Compress")
         {
-            sends[0] = true;
+            effects_send[0] = true;
             // call funcs on m_compression
         }
         else if (note->Instrument() == L"NoiseGate")
         {
-            sends[1] = true;
+            effects_send[1] = true;
             // call funcs on m_noiseGate
         }
         else if (note->Instrument() == L"Reverb")
         {
-            sends[2] = true;
+            effects_send[2] = true;
             // call funcs on m_reverb
         }
         */
@@ -339,6 +336,31 @@ bool CSynthesizer::Generate(double* frame)
         // Move to the next instrument in the list
         node = next;
     }
+
+    //
+    // PHASE 3a: add effects
+    // 
+
+    //bool effects_send[] = { false, false, false, false };  // starts as false, set to true for each effect added in score
+    bool effects_send[] = { false, true, false, true };  // for research purposes
+    // order =  compress, noisegate, reverb, 4th effect
+
+    // ADD LOOP/LOGIC TO UPDATE EFFECTS_SEND
+
+    for (int c = 0; c < GetNumChannels(); c++)
+    {
+        double processedFrame = frame[c];
+
+        // Apply effects in the order they were added if they are set to be used
+        if (effects_send[0]) processedFrame = m_compression.ApplyCompression(processedFrame);
+        if (effects_send[1]) processedFrame = m_noiseGate.ApplyNoiseGate(processedFrame);
+        if (effects_send[2]) processedFrame = m_reverb.ApplyReverb(processedFrame);
+        // Apply additional effects as needed here...
+
+        // Now, write the processed frame back to the frame buffer
+        frame[c] = processedFrame;
+    }
+ 
     //
     // Phase 4: Advance the time and beats
     //
