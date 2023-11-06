@@ -238,6 +238,7 @@ bool CSynthesizer::Generate(double* frame)
 
         // Create the instrument object
         CInstrument* instrument = NULL;
+
         if (note->Instrument() == L"ToneInstrument")
         {
             instrument = new CToneInstrument();
