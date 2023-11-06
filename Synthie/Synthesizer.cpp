@@ -251,6 +251,26 @@ bool CSynthesizer::Generate(double* frame)
         }
         // PROJECT 1: THIS IS WHERE I WILL ADD ALL OF THE EFFECTS STUFF
 
+        // PHASE 1a: add effects
+        bool effects_send[] = { false, false, false, false};  // starts as false, set to true for each effect added in score
+                // order =  compress, noisegate, reverb, 4th effect
+        /*
+        else if (note->Instrument() == L"Compress")
+        {
+            sends[0] = true;
+            // call funcs on m_compression
+        }
+        else if (note->Instrument() == L"NoiseGate")
+        {
+            sends[1] = true;
+            // call funcs on m_noiseGate
+        }
+        else if (note->Instrument() == L"Reverb")
+        {
+            sends[2] = true;
+            // call funcs on m_reverb
+        }
+        */
 
         // Configure the instrument object
         if (instrument != NULL)

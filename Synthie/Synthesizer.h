@@ -8,6 +8,7 @@
 #include "Reverb.h"  // PROJECT 1
 #include "Compression.h"  // PROJECT 1
 #include "NoiseGate.h"  // PROJECT 1
+// include 4th effect here
 #include "PianoFactory.h"
 #include "xmlhelp.h"
 #include <algorithm>
@@ -47,9 +48,10 @@ public:
 	void OpenScore(CString& filename);
 
 	// FIRST 3 EFFECTS FOR PROJECT 1
-	//NoiseGate m_noiseGate;
-	//Compression m_compression;
-	//Reverb m_reverb;
+	NoiseGate m_noiseGate;
+	Compression m_compression;
+	Reverb m_reverb;
+	// add 4th effect here
 
 private:
 	void XmlLoadScore(IXMLDOMNode* xml);
