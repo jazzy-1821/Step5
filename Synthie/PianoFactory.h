@@ -13,7 +13,7 @@ public:
 
 private:
 	double m_duration;
-	double m_volume;
+	double m_dynamic;
 	bool m_pedal;
 	bool m_pedalUp;
 	bool m_pedalDown;

@@ -79,7 +79,7 @@ void CPianoFactory::SetNote(CNote* note)
 		else if (name == "dynamic")
 		{
 			value.ChangeType(VT_R8);
-			m_volume = value.dblVal;
+			m_dynamic = value.dblVal;
 		}
 
 	}
