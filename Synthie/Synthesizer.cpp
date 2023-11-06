@@ -249,8 +249,8 @@ bool CSynthesizer::Generate(double* frame)
             m_pianoFactory.SetNote(note);
             instrument = m_pianoFactory.CreateInstrument();
         }
-        // PROJECT 1: THIS IS WHERE I WILL ADD ALL OF THE EFFECTS STUFF
 
+        // PROJECT 1: THIS IS WHERE I WILL ADD ALL OF THE EFFECTS STUFF
         /*
         else if (note->Instrument() == L"Compress")
         {
@@ -341,7 +341,8 @@ bool CSynthesizer::Generate(double* frame)
     // PHASE 3a: add effects
     // 
 
-    bool effects_send[] = { false, false, false, false };  // starts as false, set to true for each effect added in score
+    //bool effects_send[] = { false, false, false, false };  // starts as false, set to true for each effect added in score
+    bool effects_send[] = { true, true, true, true };  // for research purposes
     // order =  compress, noisegate, reverb, 4th effect
 
     // ADD LOOP/LOGIC TO UPDATE EFFECTS_SEND
