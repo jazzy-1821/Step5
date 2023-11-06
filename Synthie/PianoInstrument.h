@@ -43,6 +43,7 @@ private:
 	double m_decayTime;
 	double m_sustainLevel;
 	double m_amplitude; 
+	double m_dampening;
 
 };
 
