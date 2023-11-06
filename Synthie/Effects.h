@@ -1,5 +1,7 @@
 #pragma once
-class Effects
+//#include "Instrument.h"
+class Effects //:
+//	public CInstrument  // rip Instrument base class
 {
 };
 
