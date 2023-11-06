@@ -342,7 +342,7 @@ bool CSynthesizer::Generate(double* frame)
     // 
 
     //bool effects_send[] = { false, false, false, false };  // starts as false, set to true for each effect added in score
-    bool effects_send[] = { true, true, true, true };  // for research purposes
+    bool effects_send[] = { false, true, false, true };  // for research purposes
     // order =  compress, noisegate, reverb, 4th effect
 
     // ADD LOOP/LOGIC TO UPDATE EFFECTS_SEND
