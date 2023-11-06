@@ -105,7 +105,7 @@ void CPianoInstrument::SetNote(CNote* note)
 		m_wave[i] = short(m_outputWave);
 	}*/
 
-	//Envelope();
+	Envelope();
 	this->GetWavePlayer()->SetSamples(&m_wave[0], (int)m_wave.size());
 }
 
