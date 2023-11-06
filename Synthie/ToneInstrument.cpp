@@ -66,8 +66,6 @@ void CToneInstrument::SetNote(CNote* note)
 
         if (name == "duration")
         {
-            //m_duration = (1 / (m_bpm / 60));
-
             value.ChangeType(VT_R8); 
             SetDuration(value.dblVal * (60.0 / m_bpm));
             m_ar.SetDuration(value.dblVal * (60.0/m_bpm));
