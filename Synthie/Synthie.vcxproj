@@ -196,7 +196,6 @@
     <None Include="res\Synthie.rc2" />
     <None Include="res\Toolbar.bmp" />
     <None Include="res\Toolbar256.bmp" />
-    <None Include="test1.score" />
     <None Include="UserImages.bmp" />
   </ItemGroup>
   <ItemGroup>
