@@ -68,7 +68,7 @@ void CPianoInstrument::SetNote(CNote* note)
 	m_duration += m_release;
 
 
-	this->GetPlayer()->SetSamples(&m_wave[0], (int)m_wave.size());
+	this->GetWavePlayer()->SetSamples(&m_wave[0], (int)m_wave.size());
 }
 
 bool CPianoInstrument::LoadWaveFile(const char* filename)
@@ -153,3 +153,5 @@ bool CPianoInstrument::PedalUp()
 	m_file.Close();
 	return true;
 }
+
+
