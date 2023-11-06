@@ -33,6 +33,7 @@ private:
 	std::vector<short> m_wave;
 	std::vector<short> m_pedalWave;
 	double m_duration;
+	double m_dynamic;
 	double m_time;
 	double m_attack;
 	double m_release;
