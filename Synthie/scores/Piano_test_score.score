@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<score bpm="60" beatspermeasure="4">
+	<instrument instrument="PianoInstrument">
+		<note measure="1" beat="1" duration="1" note="CompletePiano/E6s.wav"/>
+		<note measure="1" beat="2" note="CompletePiano/D6s.wav"/>
+		<note measure="1" beat="3" pedal="pressed" note="CompletePiano/C6s.wav"/>
+	</instrument>
+</score>
