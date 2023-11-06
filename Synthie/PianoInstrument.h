@@ -28,6 +28,8 @@ public:
 
 	void ChangeDuration();
 
+	void Envelope();
+
 private:
 	CWavePlayer m_wavePlayer;
 	std::vector<short> m_wave;
@@ -38,5 +40,9 @@ private:
 	double m_attack;
 	double m_release;
 	bool m_pedal;
+	double m_decayTime;
+	double m_sustainLevel;
+	double m_amplitude; 
+
 };
 

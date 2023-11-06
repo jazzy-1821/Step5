@@ -6,7 +6,12 @@ CPianoInstrument::CPianoInstrument()
 {
 	m_attack = 0.05;
 	m_release = 0.25;
+	m_time = 0.0;
+	m_decayTime = 0.01;
+	m_sustainLevel = 0.55;
 	m_duration = 1.0;
+	m_amplitude = 0.0;
+	m_dynamic = 1.0;
 	m_pedal = false;
 }
 
@@ -27,7 +32,6 @@ bool CPianoInstrument::Generate()
 
 	m_frame[0] = m_wavePlayer.Frame(0);
 	m_frame[1] = m_frame[0];
-
 	return valid;
 }
 
@@ -67,7 +71,7 @@ void CPianoInstrument::SetNote(CNote* note)
 
 	m_duration += m_release;
 
-
+	Envelope();
 	this->GetWavePlayer()->SetSamples(&m_wave[0], (int)m_wave.size());
 }
 
@@ -152,6 +156,42 @@ bool CPianoInstrument::PedalUp()
 
 	m_file.Close();
 	return true;
+}
+
+// Used past ramp example and ChatGPT to help include the sustain and decay in the envelope function
+void CPianoInstrument::Envelope()
+{
+
+	double changed_wave;
+	double m_ramp;
+	double m_duration = m_wave.size() / 44100.;
+
+	for (unsigned int i = 0; i < m_wave.size(); i++, m_time += 1 / 44100.)
+	{
+		if (m_time <= m_attack)
+		{
+			// Attack phase: Apply exponential or non-linear envelope
+			m_ramp = 1.0 - exp(-5.0 * m_time / m_attack);
+		}
+		else if (m_time <= m_attack + m_decayTime)
+		{
+			// Decay phase: Apply exponential or non-linear envelope
+			m_ramp = m_sustainLevel + (1.0 - m_sustainLevel) * (1.0 - exp(-5.0 * (m_time - m_attack) / m_decayTime));
+		}
+		else if (m_time <= m_duration - m_release)
+		{
+			// Sustain phase: Maintain sustain level
+			m_ramp = m_sustainLevel;
+		}
+		else
+		{
+			// Release phase: Apply exponential or non-linear envelope
+			m_ramp = m_sustainLevel * exp(-5.0 * (m_time - (m_duration - m_release)) / m_release);
+		}
+
+		changed_wave = m_wave[i] * m_ramp * m_dynamic;
+		m_wave[i] = short(changed_wave);
+	}
 }
 
 
