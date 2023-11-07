@@ -8,18 +8,21 @@ double Compression::ApplyCompression(double inputSample) {
     //double modifiedSample = inputSample;
     //return modifiedSample;
 //}
+    // Save the original inputSample for the dry signal
+    double mixedSample = inputSample;
+
     const double threshold = 0.5;  // Example threshold
     const double compressionRatio = 0.5;  // 50% volume reduction
     // Check if the inputSample exceeds the threshold
     if (inputSample > threshold) {
         // Apply compression by reducing the sample's magnitude by 50%
-        inputSample -= (inputSample - threshold) * compressionRatio;
+        mixedSample -= (inputSample - threshold) * compressionRatio;
     }
     else if (inputSample < -threshold) {
         // Apply compression to negative values as well
-        inputSample += (-inputSample - threshold) * compressionRatio;
+        mixedSample += (-inputSample - threshold) * compressionRatio;
     }
 
     // Return the possibly modified sample
-    return inputSample;
+    return (mixedSample * m_wet) + (inputSample * m_dry);
 }
