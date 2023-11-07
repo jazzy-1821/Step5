@@ -341,8 +341,8 @@ bool CSynthesizer::Generate(double* frame)
     // PHASE 3a: add effects
     // 
 
-    bool effects_send[] = { false, false, false, false };  // starts as false, set to true for each effect added in score
-    //bool effects_send[] = { false, true, false, true };  // for research purposes
+    //bool effects_send[] = { false, false, false, false };  // starts as false, set to true for each effect added in score
+    bool effects_send[] = { false, false, false, false };  // for research purposes
     // order =  compress, noisegate, reverb, 4th effect
 
     // ADD LOOP/LOGIC TO UPDATE EFFECTS_SEND
@@ -356,6 +356,7 @@ bool CSynthesizer::Generate(double* frame)
         if (effects_send[1]) processedFrame = m_noiseGate.ApplyNoiseGate(processedFrame);
         if (effects_send[2]) processedFrame = m_reverb.ApplyReverb(processedFrame);
         // Apply additional effects as needed here...
+        //if (effects_send[2]) processedFrame = m_reverb.ApplyReverb(processedFrame);
 
         // Now, write the processed frame back to the frame buffer
         frame[c] = processedFrame;
