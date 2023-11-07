@@ -72,39 +72,6 @@ void CPianoInstrument::SetNote(CNote* note)
 
 	m_duration += m_release;
 
-	/*double m_outputWave;
-
-	for (unsigned int i = 0; i < m_wave.size(); i++, m_time += 1 / 44100.)
-	{
-		if (!m_pedal) {
-			if (m_time <= m_attack) {
-				// Attack phase
-				m_dampening = 1.0 - exp(-5.0 * m_time / m_attack);
-			}
-			else if (m_time <= m_attack + m_decayTime) {
-				// Decay phase
-				m_dampening = m_sustainLevel + (1.0 - m_sustainLevel) * (1.0 - exp(-5.0 * (m_time - m_attack) / m_decayTime));
-			}
-			else {
-				// Sustain phase
-				m_dampening = m_sustainLevel;
-			}
-		}
-		else {
-			// Pedal is pressed, so sustain indefinitely
-			m_dampening = 1.0;
-		}
-
-		// Continue with the release phase if the pedal is not pressed
-		if (!m_pedal && m_time > (m_duration - m_release)) {
-			// Release phase
-			m_dampening *= exp(-5.0 * (m_time - (m_duration - m_release)) / m_release);
-		}
-
-		m_outputWave = m_wave[i] * m_dampening * m_dynamic;
-		m_wave[i] = short(m_outputWave);
-	}*/
-
 	Envelope();
 	this->GetWavePlayer()->SetSamples(&m_wave[0], (int)m_wave.size());
 }
@@ -201,25 +168,29 @@ void CPianoInstrument::Envelope()
 
 	for (unsigned int i = 0; i < m_wave.size(); i++, m_time += 1 / 44100.)
 	{
-		if (m_time <= m_attack)
-		{
-			// Attack phase: Apply exponential or non-linear envelope
-			m_ramp = 1.0 - exp(-5.0 * m_time / m_attack);
+		if (!m_pedal) {
+			if (m_time <= m_attack) {
+				// Attack phase
+				m_ramp = 1.0 - exp(-5.0 * m_time / m_attack);
+			}
+			else if (m_time <= m_attack + m_decayTime) {
+				// Decay phase
+				m_ramp = m_sustainLevel + (1.0 - m_sustainLevel) * (1.0 - exp(-5.0 * (m_time - m_attack) / m_decayTime));
+			}
+			else {
+				// Sustain phase
+				m_ramp = m_sustainLevel;
+			}
 		}
-		else if (m_time <= m_attack + m_decayTime)
-		{
-			// Decay phase: Apply exponential or non-linear envelope
-			m_ramp = m_sustainLevel + (1.0 - m_sustainLevel) * (1.0 - exp(-5.0 * (m_time - m_attack) / m_decayTime));
+		else {
+			// Pedal is pressed, so sustain indefinitely
+			m_ramp = 1.0;
 		}
-		else if (m_time <= m_duration - m_release)
-		{
-			// Sustain phase: Maintain sustain level
-			m_ramp = m_sustainLevel;
-		}
-		else
-		{
-			// Release phase: Apply exponential or non-linear envelope
-			m_ramp = m_sustainLevel * exp(-5.0 * (m_time - (m_duration - m_release)) / m_release);
+
+		// Continue with the release phase if the pedal is not pressed
+		if (!m_pedal && m_time > (m_duration - m_release)) {
+			// Release phase
+			m_ramp *= exp(-5.0 * (m_time - (m_duration - m_release)) / m_release);
 		}
 
 		changed_wave = m_wave[i] * m_ramp * m_dynamic;

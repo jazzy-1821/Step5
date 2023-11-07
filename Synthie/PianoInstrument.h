@@ -19,7 +19,8 @@ public:
 	bool LoadWaveFile(const char* filename);
 
 	void SetPedal(bool pedal) { m_pedal = pedal; }
-	void SetDuration(double d) { m_duration = d; }
+	void SetDuration(double dur) { m_duration = dur; }
+	void SetDynamic(double dyn) { m_dynamic = dyn; }
 
 	bool PedalDown();
 	bool PedalUp();

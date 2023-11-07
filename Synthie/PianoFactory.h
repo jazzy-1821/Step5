@@ -11,6 +11,7 @@ public:
 	void SetNote(CNote* note);
 
 
+
 private:
 	double m_duration;
 	double m_dynamic;

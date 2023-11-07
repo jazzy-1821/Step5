@@ -19,6 +19,7 @@ CPianoInstrument* CPianoFactory::CreateInstrument()
 
 	instrument->SetDuration(m_duration);
 	instrument->SetPedal(m_pedal);
+	instrument->SetDynamic(m_dynamic);
 
 	if (m_pedalDown) {
 		instrument->PedalDown();
