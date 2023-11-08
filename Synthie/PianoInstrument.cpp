@@ -95,6 +95,23 @@ bool CPianoInstrument::LoadWaveFile(const char* filename)
 		m_wave.push_back(frame[0]);
 	}
 
+	//Interpolate(m_softSampleWave, m_loudSampleWave, m_velocity);
+
+	if (m_loudSampleWave.size() != 0) 
+	{
+		for (unsigned int j = 0; j < m_loudSampleWave.size(); j++) {
+			m_wave[j] += m_loudSampleWave[j];
+		}
+		m_loudSampleWave.clear();
+	}
+
+	if (m_softSampleWave.size() != 0)
+	{
+		for (unsigned int j = 0; j < m_softSampleWave.size(); j++) {
+			m_wave[j] += m_softSampleWave[j];
+		}
+		m_softSampleWave.clear();
+	}
 
 	if (m_pedalWave.size() != 0) {
 		for (unsigned int j = 0; j < m_pedalWave.size(); j++) {
@@ -102,6 +119,8 @@ bool CPianoInstrument::LoadWaveFile(const char* filename)
 		}
 		m_pedalWave.clear();
 	}
+
+
 
 	m_file.Close();
 	return true;
@@ -158,24 +177,62 @@ bool CPianoInstrument::PedalUp()
 	return true;
 }
 
-void CPianoInstrument::Interpolate(double m_velocity)
+bool CPianoInstrument::LoudSoftSample()
 {
-		std::vector<double> result;
-		if (m_velocity < 0.0) m_velocity = 0.0;
-		if (m_velocity > 1.0) m_velocity = 1.0;
+	CDirSoundSource m_file;
 
-		for (unsigned int i = 0; i < m_wave.size(); i++, m_time += 1 / 44100.) {
-			double softSample = m_wave[i] / 2;
-			double loudSample = m_wave[i]  * 2;
-			double interpolatedSample = (1.0 - m_velocity) * softSample + m_velocity * loudSample;
-			//result.push_back(interpolatedSample);
+	char filename1[] = "CompletePiano/LoudPianoString.wav";
 
-			m_wave[i] = short(interpolatedSample);
-		}
+	char filename2[] = "CompletePiano/SoftPianoString.wav";
 
-		
-	
+	if (!m_file.Open(filename1))
+	{
+		CString msg = L"Unable to open audio file: ";
+		msg += filename1;
+		AfxMessageBox(msg);
+		return false;
+	}
+	else if (!m_file.Open(filename2))
+	{
+		CString msg = L"Unable to open audio file: ";
+		msg += filename2;
+		AfxMessageBox(msg);
+		return false;
+	}
+
+	for (int i = 0; i < m_file.NumSampleFrames(); i++)
+	{
+		short frame[2];
+		m_file.ReadFrame(frame);
+		m_loudSampleWave.push_back(frame[0]);
+	}
+
+	for (int i = 0; i < m_file.NumSampleFrames(); i++)
+	{
+		short frame[2];
+		m_file.ReadFrame(frame);
+		m_softSampleWave.push_back(frame[0]);
+	}
+
+	m_file.Close();
+	return true;
 }
+
+std::vector<short> CPianoInstrument::Interpolate(const std::vector<short>& soft, const std::vector<short>& loud, double velocity) {
+	std::vector<short> result;
+	if (velocity < 0.0) velocity = 0.0;
+	if (velocity > 1.0) velocity = 1.0;
+
+	for (size_t i = 0; i < soft.size(); i++) {
+		double softSample = soft[i];
+		double loudSample = loud[i];
+		double interpolatedSample = (1.0 - velocity) * softSample + velocity * loudSample;
+		result.push_back(interpolatedSample);
+	}
+
+	return result;
+}
+
 
 // Used past ramp example and ChatGPT to help include the sustain and decay in the envelope function
 void CPianoInstrument::Envelope()

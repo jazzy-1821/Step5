@@ -21,6 +21,7 @@ CPianoInstrument* CPianoFactory::CreateInstrument()
 	instrument->SetPedal(m_pedal);
 	instrument->SetVelocity(m_velocity);
 	//instrument->Interpolate(m_velocity);
+	//instrument->LoudSoftSample();
 
 	if (m_pedalDown) {
 		instrument->PedalDown();
