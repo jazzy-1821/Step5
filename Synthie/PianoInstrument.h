@@ -20,7 +20,7 @@ public:
 
 	void SetPedal(bool pedal) { m_pedal = pedal; }
 	void SetDuration(double dur) { m_duration = dur; }
-	void SetDynamic(double dyn) { m_dynamic = dyn; }
+	void SetVelocity(double vel) { m_velocity = vel; }
 
 	bool PedalDown();
 	bool PedalUp();
@@ -36,7 +36,7 @@ private:
 	std::vector<short> m_wave;
 	std::vector<short> m_pedalWave;
 	double m_duration;
-	double m_dynamic;
+	double m_velocity;
 	double m_time;
 	double m_attack;
 	double m_release;
