@@ -24,5 +24,5 @@ double Compression::ApplyCompression(double inputSample) {
     }
 
     // Return the possibly modified sample
-    return (mixedSample * m_wet) + (inputSample * m_dry);
+    return (mixedSample * m_wet_COMP) + (inputSample * m_dry_COMP);
 }

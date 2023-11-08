@@ -10,4 +10,6 @@ class Flange :
     private:
         double m_delayBuffer[44100];  // Delay buffer for 1-second maximum delay (adjust as needed)
         int m_readIndex;
+
+        // NEED TO ADD WET/DRY STUFF TO FLANGE
 };

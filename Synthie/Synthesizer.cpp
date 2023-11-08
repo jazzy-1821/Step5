@@ -234,6 +234,8 @@ bool CSynthesizer::Generate(double* frame)
     // Phase 1: Determine if any notes need to be played.
     //
 
+    bool effects_send[] = { false, false, false, false };  // starts as false, set to true for each effect added in score
+
     while (m_currentNote < (int)m_notes.size())
     {
         // Get a pointer to the current note
@@ -268,24 +270,25 @@ bool CSynthesizer::Generate(double* frame)
             instrument = m_pianoFactory.CreateInstrument();
         }
 
-        // PROJECT 1: THIS IS WHERE I WILL ADD ALL OF THE EFFECTS STUFF
-        /*
-        else if (note->Instrument() == L"Compress")
+        //
+        // PROJECT 1: ASHLIN UPDATE EFFECTS FROM SCORE
+        //
+        else if (note->Instrument() == L"Compression")
         {
             effects_send[0] = true;
-            // call funcs on m_compression
+            // UPDATE WET/DRY:
         }
         else if (note->Instrument() == L"NoiseGate")
         {
             effects_send[1] = true;
-            // call funcs on m_noiseGate
+            // UPDATE WET/DRY:
         }
         else if (note->Instrument() == L"Reverb")
         {
             effects_send[2] = true;
-            // call funcs on m_reverb
+            // UPDATE WET/DRY:
         }
-        */
+        
 
         // Configure the instrument object
         if (instrument != NULL)
@@ -359,8 +362,7 @@ bool CSynthesizer::Generate(double* frame)
     // PHASE 3a: add effects
     // 
 
-    //bool effects_send[] = { false, false, false, false };  // starts as false, set to true for each effect added in score
-    bool effects_send[] = { true, true, true, true };  // for research purposes
+    //bool effects_send[] = { true, true, true, true };  // for research purposes
     // order =  compress, noisegate, reverb, 4th effect
 
     // ADD LOOP/LOGIC TO UPDATE EFFECTS_SEND
@@ -373,8 +375,7 @@ bool CSynthesizer::Generate(double* frame)
         if (effects_send[0]) processedFrame = m_compression.ApplyCompression(processedFrame);
         if (effects_send[1]) processedFrame = m_noiseGate.ApplyNoiseGate(processedFrame);
         if (effects_send[2]) processedFrame = m_reverb.ApplyReverb(processedFrame);
-        // Apply additional effects as needed here...
-        //if (effects_send[2]) processedFrame = m_reverb.ApplyReverb(processedFrame);
+        //if (effects_send[4]) processedFrame = m_reverb.ApplyFlange(processedFrame);
 
         // Now, write the processed frame back to the frame buffer
         frame[c] = processedFrame;
