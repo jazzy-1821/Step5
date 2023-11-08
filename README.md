@@ -1,5 +1,5 @@
 # CONTRIBUTIONS:
-Jasmine Richardson - Piano Instrument
+Jasmine Richardson - Piano Instrument  
 Ashlin Riggs - Effects
 
 # FILE STRUCTURE:
