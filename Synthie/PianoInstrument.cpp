@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "PianoInstrument.h"
 #include "audio/DirSoundSource.h"
+#include <algorithm>
 
 CPianoInstrument::CPianoInstrument()
 {
@@ -67,7 +68,6 @@ void CPianoInstrument::SetNote(CNote* note)
 			LoadWaveFile(filename);
 
 		}
-
 	}
 
 	m_duration += m_release;
@@ -95,22 +95,12 @@ bool CPianoInstrument::LoadWaveFile(const char* filename)
 		m_wave.push_back(frame[0]);
 	}
 
-	//Interpolate(m_softSampleWave, m_loudSampleWave, m_velocity);
-
-	if (m_loudSampleWave.size() != 0) 
+	if (m_interpolatedWave.size() != 0)
 	{
-		for (unsigned int j = 0; j < m_loudSampleWave.size(); j++) {
-			m_wave[j] += m_loudSampleWave[j];
+		for (unsigned int j = 0; j < m_interpolatedWave.size(); j++) {
+			m_wave[j] += m_interpolatedWave[j];
 		}
-		m_loudSampleWave.clear();
-	}
-
-	if (m_softSampleWave.size() != 0)
-	{
-		for (unsigned int j = 0; j < m_softSampleWave.size(); j++) {
-			m_wave[j] += m_softSampleWave[j];
-		}
-		m_softSampleWave.clear();
+		m_interpolatedWave.clear();
 	}
 
 	if (m_pedalWave.size() != 0) {
@@ -119,8 +109,6 @@ bool CPianoInstrument::LoadWaveFile(const char* filename)
 		}
 		m_pedalWave.clear();
 	}
-
-
 
 	m_file.Close();
 	return true;
@@ -177,25 +165,16 @@ bool CPianoInstrument::PedalUp()
 	return true;
 }
 
-bool CPianoInstrument::LoudSoftSample()
+bool CPianoInstrument::LoudSample()
 {
 	CDirSoundSource m_file;
 
-	char filename1[] = "CompletePiano/LoudPianoString.wav";
+	char filename[] = "CompletePiano/LoudPianoString.wav";
 
-	char filename2[] = "CompletePiano/SoftPianoString.wav";
-
-	if (!m_file.Open(filename1))
+	if (!m_file.Open(filename))
 	{
 		CString msg = L"Unable to open audio file: ";
-		msg += filename1;
-		AfxMessageBox(msg);
-		return false;
-	}
-	else if (!m_file.Open(filename2))
-	{
-		CString msg = L"Unable to open audio file: ";
-		msg += filename2;
+		msg += filename;
 		AfxMessageBox(msg);
 		return false;
 	}
@@ -205,6 +184,23 @@ bool CPianoInstrument::LoudSoftSample()
 		short frame[2];
 		m_file.ReadFrame(frame);
 		m_loudSampleWave.push_back(frame[0]);
+	}
+	m_file.Close();
+	return true;
+}
+
+bool CPianoInstrument::SoftSample()
+{
+	CDirSoundSource m_file;
+
+	char filename[] = "CompletePiano/SoftPianoString.wav";
+
+	if (!m_file.Open(filename))
+	{
+		CString msg = L"Unable to open audio file: ";
+		msg += filename;
+		AfxMessageBox(msg);
+		return false;
 	}
 
 	for (int i = 0; i < m_file.NumSampleFrames(); i++)
@@ -218,19 +214,22 @@ bool CPianoInstrument::LoudSoftSample()
 	return true;
 }
 
-std::vector<short> CPianoInstrument::Interpolate(const std::vector<short>& soft, const std::vector<short>& loud, double velocity) {
-	std::vector<short> result;
-	if (velocity < 0.0) velocity = 0.0;
-	if (velocity > 1.0) velocity = 1.0;
+void CPianoInstrument::Interpolate(const std::vector<short>& soft, const std::vector<short>& loud, double velocity) {
+
 
 	for (size_t i = 0; i < soft.size(); i++) {
-		double softSample = soft[i];
-		double loudSample = loud[i];
-		double interpolatedSample = (1.0 - velocity) * softSample + velocity * loudSample;
-		result.push_back(interpolatedSample);
+		double softSample = soft[i] / 32767.0;
+		double loudSample = loud[i] / 32767.0;
+		double interpolatedSample = (loudSample - softSample) / 2  * (m_velocity / 127.0);
+
+		// Ensure the amplitude is within the range [-1, 1]
+		//interpolatedSample = std::max(-1.0, std::min(1.0, interpolatedSample));
+
+		// Convert back to short
+
+		m_interpolatedWave.push_back(static_cast<short>(interpolatedSample * 32767));
 	}
 
-	return result;
 }
 
 

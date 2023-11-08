@@ -4,6 +4,7 @@
 CPianoFactory::CPianoFactory()
 {
 	m_duration = 1.0;
+	m_velocity = 60.0;
 	m_pedal = false;
 	m_pedalDown = false;
 	m_pedalUp = false;
@@ -20,9 +21,16 @@ CPianoInstrument* CPianoFactory::CreateInstrument()
 	instrument->SetDuration(m_duration);
 	instrument->SetPedal(m_pedal);
 	instrument->SetVelocity(m_velocity);
-	//instrument->Interpolate(m_velocity);
-	//instrument->LoudSoftSample();
 
+	if (m_advDynamic)
+	{
+		instrument->LoudSample();
+		instrument->SoftSample();
+		instrument->Interpolate(instrument->GetSoftSample(), instrument->GetLoudSample(), m_velocity);
+		m_advDynamic = false;
+	}
+	
+	
 	if (m_pedalDown) {
 		instrument->PedalDown();
 		m_pedalDown = false;
@@ -83,6 +91,19 @@ void CPianoFactory::SetNote(CNote* note)
 		{
 			value.ChangeType(VT_R8);
 			m_velocity = value.dblVal;
+			
+		}
+		else if (name == "advanceDynamic")
+		{
+			value.ChangeType(VT_BSTR);
+			char advdynam[100];
+			wcstombs(advdynam, value.bstrVal, 100);
+			std::string advdynam_str(advdynam);
+
+			if (advdynam_str == "struck") {
+				m_advDynamic = true;
+			}
+			
 		}
 
 	}

@@ -15,6 +15,7 @@ public:
 private:
 	double m_duration;
 	double m_velocity;
+	bool m_advDynamic;
 	bool m_pedal;
 	bool m_pedalUp;
 	bool m_pedalDown;

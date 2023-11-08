@@ -25,12 +25,16 @@ public:
 	bool PedalDown();
 	bool PedalUp();
 
-	bool LoudSoftSample();
+	bool LoudSample();
+	bool SoftSample();
 
 
 	CWavePlayer* GetWavePlayer() { return &m_wavePlayer; }
 
-	std::vector<short> Interpolate(const std::vector<short>& soft, const std::vector<short>& loud, double velocity);
+	std::vector<short> GetLoudSample() { return m_loudSampleWave; }
+	std::vector<short> GetSoftSample() { return m_softSampleWave; }
+
+	void Interpolate(const std::vector<short>& soft, const std::vector<short>& loud, double velocity);
 
 	void Envelope();
 
@@ -40,6 +44,7 @@ private:
 	std::vector<short> m_pedalWave;
 	std::vector<short> m_loudSampleWave;
 	std::vector<short> m_softSampleWave;
+	std::vector<short> m_interpolatedWave;
 	double m_duration;
 	double m_velocity;
 	double m_time;
