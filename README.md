@@ -1,6 +1,6 @@
 # CONTRIBUTIONS:
 Jasmine Richardson - Piano Instrument  
-Ashlin Riggs - Effects
+Ashlin Riggs - Effects (Compression, Reverb, Flange, Noise Gate)
 
 # FILE STRUCTURE:
 
