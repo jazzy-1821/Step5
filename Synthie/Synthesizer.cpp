@@ -123,7 +123,6 @@ void CSynthesizer::XmlLoadScore(IXMLDOMNode* xml)
             value.ChangeType(VT_I4);
             m_beatspermeasure = value.intVal;
         }
-
     }
 
 
@@ -172,6 +171,25 @@ void CSynthesizer::XmlLoadInstrument(IXMLDOMNode* xml)
         {
             instrument = value.bstrVal;
         }
+
+        // PROJECT 1: ADDING EFFECTS/WET/DRY HERE
+        /**/
+        else if (name == L"wet")
+        {
+            value.ChangeType(VT_BSTR);
+            std::wstring wetdryValue = value.bstrVal;
+            // Assuming you have a member variable m_wetDry in CSynthesizer to store this value
+            //m_wetDry = (wetdryValue == L"true");
+
+            // CALL SET WET FOR EFFECTS OBJECT ON THIS
+        }
+        else if (name == L"effects_send")
+        {
+            value.ChangeType(VT_BSTR);
+            std::wstring effectsSendValue = value.bstrVal;
+            // Assuming you have a member array m_effectsSend[4] in CSynthesizer to store these values
+            m_effectsSend[i] = (effectsSendValue == L"true"); // i should be the index of the specific effect
+        }/**/
     }
 
 
