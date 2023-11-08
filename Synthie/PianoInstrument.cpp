@@ -11,7 +11,7 @@ CPianoInstrument::CPianoInstrument()
 	m_sustainLevel = 0.55;
 	m_duration = 1.0;
 	m_amplitude = 0.0;
-	m_velocity = 60.0;
+	m_velocity = 60.0; // Set the press velocity to a moderate velocity
 	m_dampening = 1.0;
 	m_pedal = false;
 }
