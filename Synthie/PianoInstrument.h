@@ -27,7 +27,7 @@ public:
 
 	CWavePlayer* GetWavePlayer() { return &m_wavePlayer; }
 
-	void ChangeDuration();
+	void Interpolate(double m_velocity);
 
 	void Envelope();
 

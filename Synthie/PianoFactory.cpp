@@ -20,6 +20,7 @@ CPianoInstrument* CPianoFactory::CreateInstrument()
 	instrument->SetDuration(m_duration);
 	instrument->SetPedal(m_pedal);
 	instrument->SetVelocity(m_velocity);
+	//instrument->Interpolate(m_velocity);
 
 	if (m_pedalDown) {
 		instrument->PedalDown();

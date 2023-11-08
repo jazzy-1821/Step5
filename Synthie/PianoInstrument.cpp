@@ -158,10 +158,28 @@ bool CPianoInstrument::PedalUp()
 	return true;
 }
 
+void CPianoInstrument::Interpolate(double m_velocity)
+{
+		std::vector<double> result;
+		if (m_velocity < 0.0) m_velocity = 0.0;
+		if (m_velocity > 1.0) m_velocity = 1.0;
+
+		for (unsigned int i = 0; i < m_wave.size(); i++, m_time += 1 / 44100.) {
+			double softSample = m_wave[i] / 2;
+			double loudSample = m_wave[i]  * 2;
+			double interpolatedSample = (1.0 - m_velocity) * softSample + m_velocity * loudSample;
+			//result.push_back(interpolatedSample);
+
+			m_wave[i] = short(interpolatedSample);
+		}
+
+		
+	
+}
+
 // Used past ramp example and ChatGPT to help include the sustain and decay in the envelope function
 void CPianoInstrument::Envelope()
 {
-
 	double changed_wave;
 	double m_ramp;
 	double m_duration = m_wave.size() / 44100.;
