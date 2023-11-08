@@ -11,7 +11,7 @@ CPianoInstrument::CPianoInstrument()
 	m_sustainLevel = 0.55;
 	m_duration = 1.0;
 	m_amplitude = 0.0;
-	m_dynamic = 1.0;
+	m_velocity = 60.0;
 	m_dampening = 1.0;
 	m_pedal = false;
 }
@@ -171,15 +171,15 @@ void CPianoInstrument::Envelope()
 		if (!m_pedal) {
 			if (m_time <= m_attack) {
 				// Attack phase
-				m_ramp = 1.0 - exp(-5.0 * m_time / m_attack);
+				m_ramp = 1.0 - exp(-5.0 * m_time / m_attack) * (m_velocity / 127.0);
 			}
 			else if (m_time <= m_attack + m_decayTime) {
 				// Decay phase
-				m_ramp = m_sustainLevel + (1.0 - m_sustainLevel) * (1.0 - exp(-5.0 * (m_time - m_attack) / m_decayTime));
+				m_ramp = m_sustainLevel + (1.0 - m_sustainLevel) * (1.0 - exp(-5.0 * (m_time - m_attack) / m_decayTime)) *(m_velocity / 127.0);
 			}
 			else {
 				// Sustain phase
-				m_ramp = m_sustainLevel;
+				m_ramp = m_sustainLevel * (m_velocity / 127.0);
 			}
 		}
 		else {
@@ -190,10 +190,10 @@ void CPianoInstrument::Envelope()
 		// Continue with the release phase if the pedal is not pressed
 		if (!m_pedal && m_time > (m_duration - m_release)) {
 			// Release phase
-			m_ramp *= exp(-5.0 * (m_time - (m_duration - m_release)) / m_release);
+			m_ramp *= exp(-5.0 * (m_time - (m_duration - m_release)) / m_release) * (m_velocity / 127.0);
 		}
 
-		changed_wave = m_wave[i] * m_ramp * m_dynamic;
+		changed_wave = m_wave[i] * m_ramp;
 		m_wave[i] = short(changed_wave);
 	}
 }

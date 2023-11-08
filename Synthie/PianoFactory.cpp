@@ -19,7 +19,7 @@ CPianoInstrument* CPianoFactory::CreateInstrument()
 
 	instrument->SetDuration(m_duration);
 	instrument->SetPedal(m_pedal);
-	instrument->SetDynamic(m_dynamic);
+	instrument->SetVelocity(m_velocity);
 
 	if (m_pedalDown) {
 		instrument->PedalDown();
@@ -77,10 +77,10 @@ void CPianoFactory::SetNote(CNote* note)
 				m_pedal = false;
 			}
 		}
-		else if (name == "dynamic")
+		else if (name == "velocity")
 		{
 			value.ChangeType(VT_R8);
-			m_dynamic = value.dblVal;
+			m_velocity = value.dblVal;
 		}
 
 	}
