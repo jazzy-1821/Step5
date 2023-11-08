@@ -173,7 +173,7 @@ void CSynthesizer::XmlLoadInstrument(IXMLDOMNode* xml)
         }
 
         // PROJECT 1: ADDING EFFECTS/WET/DRY HERE
-        /**/
+        /*
         else if (name == L"wet")
         {
             value.ChangeType(VT_BSTR);
@@ -189,7 +189,7 @@ void CSynthesizer::XmlLoadInstrument(IXMLDOMNode* xml)
             std::wstring effectsSendValue = value.bstrVal;
             // Assuming you have a member array m_effectsSend[4] in CSynthesizer to store these values
             m_effectsSend[i] = (effectsSendValue == L"true"); // i should be the index of the specific effect
-        }/**/
+        }*/
     }
 
 
