@@ -134,6 +134,7 @@
     <ClCompile Include="audio\DirSoundStream.cpp" />
     <ClCompile Include="Compression.cpp" />
     <ClCompile Include="Effects.cpp" />
+    <ClCompile Include="Flange.cpp" />
     <ClCompile Include="Instrument.cpp" />
     <ClCompile Include="NoiseGate.cpp" />
     <ClCompile Include="Note.cpp" />
@@ -166,6 +167,7 @@
     <ClInclude Include="audio\DirSoundStream.h" />
     <ClInclude Include="Compression.h" />
     <ClInclude Include="Effects.h" />
+    <ClInclude Include="Flange.h" />
     <ClInclude Include="Instrument.h" />
     <ClInclude Include="NoiseGate.h" />
     <ClInclude Include="Note.h" />
