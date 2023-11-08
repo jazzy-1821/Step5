@@ -26,5 +26,5 @@ double Reverb::ApplyReverb(double inputSample) {
     readIndex = (readIndex + 1) % DELAY_BUFFER_LENGTH;
 
     // Return the mixed sample
-    return (mixedSample * m_wet) + (inputSample * m_dry);  //mixedSample;
+    return (mixedSample * m_wet_R) + (inputSample * m_dry_R);  //mixedSample;
 }

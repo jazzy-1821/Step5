@@ -2,15 +2,15 @@
 #include "NoiseGate.h"
 #include <cmath> // Include this for std::abs
 
-// HARDCODED THRESHOLD FOR THE NOISEGATE
-const double THRESHOLD = 0.01;  // std::pow(10.0, THRESHOLD_dB / 20.0); // Convert dB to linear
+// HARDCODED THRESHOLD FOR THE NOISEGATE... will update thresh in score???
+//const double THRESHOLD = NoiseGate::thresh;//0.05;//NoiseGate::thresh;
 
 double NoiseGate::ApplyNoiseGate(double inputSample) {
 
     double mixedSample;
 
     // The gate is open if the sample is louder than the threshold
-    if (std::abs(inputSample) > THRESHOLD) {
+    if (std::abs(inputSample) > thresh) {
         mixedSample = inputSample; // sample is loud enough to pass through the gate
     }
     else {
@@ -18,17 +18,5 @@ double NoiseGate::ApplyNoiseGate(double inputSample) {
     }
 
     // apply wet/dry mix
-    return (mixedSample * m_wet) + (inputSample * m_dry);
-    
-    // BEFORE ADDING WET/DRY:
-    /*
-    // The gate is open if the sample is louder than the threshold
-    if (std::abs(inputSample) > THRESHOLD) {
-        // The sample is loud enough to pass through the gate
-        return inputSample;
-    }
-    else {
-        // The sample is too quiet and gets silenced
-        return 0.0;
-    } */
+    return (mixedSample * m_wet_NG) + (inputSample * m_dry_NG);
 }
