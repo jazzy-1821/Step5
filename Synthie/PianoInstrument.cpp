@@ -95,13 +95,13 @@ bool CPianoInstrument::LoadWaveFile(const char* filename)
 		m_wave.push_back(frame[0]);
 	}
 
-	if (m_interpolatedWave.size() != 0)
+	/*if (m_interpolatedWave.size() != 0)
 	{
 		for (unsigned int j = 0; j < m_interpolatedWave.size(); j++) {
 			m_wave[j] += m_interpolatedWave[j];
 		}
 		m_interpolatedWave.clear();
-	}
+	}*/
 
 	if (m_pedalWave.size() != 0) {
 		for (unsigned int j = 0; j < m_pedalWave.size(); j++) {
@@ -167,6 +167,7 @@ bool CPianoInstrument::PedalUp()
 
 bool CPianoInstrument::LoudSample()
 {
+	m_loudSampleWave.clear();
 	CDirSoundSource m_file;
 
 	char filename[] = "CompletePiano/LoudPianoString.wav";
@@ -191,6 +192,7 @@ bool CPianoInstrument::LoudSample()
 
 bool CPianoInstrument::SoftSample()
 {
+	m_softSampleWave.clear();
 	CDirSoundSource m_file;
 
 	char filename[] = "CompletePiano/SoftPianoString.wav";
@@ -214,20 +216,15 @@ bool CPianoInstrument::SoftSample()
 	return true;
 }
 
-void CPianoInstrument::Interpolate(const std::vector<short>& soft, const std::vector<short>& loud, double velocity) {
+void CPianoInstrument::Interpolate(const std::vector<short>& soft, const std::vector<short>& loud, double range) {
 
-
-	for (size_t i = 0; i < soft.size(); i++) {
-		double softSample = soft[i] / 32767.0;
-		double loudSample = loud[i] / 32767.0;
-		double interpolatedSample = (loudSample - softSample) / 2  * (m_velocity / 127.0);
-
-		// Ensure the amplitude is within the range [-1, 1]
-		//interpolatedSample = std::max(-1.0, std::min(1.0, interpolatedSample));
+	
+	for (size_t i = 0; i < m_wave.size(); i++) {
+		double softSample = soft[i];
+		double loudSample = loud[i];
 
 		// Convert back to short
-
-		m_interpolatedWave.push_back(static_cast<short>(interpolatedSample * 32767));
+		m_wave.push_back(static_cast<short>((range * loudSample) + ((1 - range) * softSample)));
 	}
 
 }

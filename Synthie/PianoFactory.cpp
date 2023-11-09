@@ -5,6 +5,7 @@ CPianoFactory::CPianoFactory()
 {
 	m_duration = 1.0;
 	m_velocity = 60.0;
+	m_advDynamic = false;
 	m_pedal = false;
 	m_pedalDown = false;
 	m_pedalUp = false;
@@ -26,6 +27,10 @@ CPianoInstrument* CPianoFactory::CreateInstrument()
 	{
 		instrument->LoudSample();
 		instrument->SoftSample();
+		if (m_velocity > 1)
+			m_velocity = 1;
+		else if (m_velocity < 0)
+			m_velocity = 0;
 		instrument->Interpolate(instrument->GetSoftSample(), instrument->GetLoudSample(), m_velocity);
 		m_advDynamic = false;
 	}
