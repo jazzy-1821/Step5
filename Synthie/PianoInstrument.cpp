@@ -72,7 +72,7 @@ void CPianoInstrument::SetNote(CNote* note)
 
 	m_duration += m_release;
 
-	Envelope();
+	//Envelope();
 	this->GetWavePlayer()->SetSamples(&m_wave[0], (int)m_wave.size());
 }
 
@@ -114,7 +114,7 @@ bool CPianoInstrument::LoadWaveFile(const char* filename)
 	m_file.Close();
 	return true;
 }
-
+//Loads the pedal down file
 bool CPianoInstrument::PedalDown()
 {
 	CDirSoundSource m_file;
@@ -141,6 +141,7 @@ bool CPianoInstrument::PedalDown()
 	return true;
 }
 
+//Loads the pedal up file
 bool CPianoInstrument::PedalUp()
 {
 	CDirSoundSource m_file;
@@ -166,6 +167,7 @@ bool CPianoInstrument::PedalUp()
 	return true;
 }
 
+// Loads the louds example into a vector
 bool CPianoInstrument::LoudSample()
 {
 	m_loudSampleWave.clear();
@@ -190,6 +192,8 @@ bool CPianoInstrument::LoudSample()
 	m_file.Close();
 	return true;
 }
+
+//Loads the soft example
 
 bool CPianoInstrument::SoftSample()
 {
@@ -217,6 +221,7 @@ bool CPianoInstrument::SoftSample()
 	return true;
 }
 
+// Interpolates between a louder piano string getting hit and a soft piano key getting hit
 void CPianoInstrument::Interpolate(const std::vector<short>& soft, const std::vector<short>& loud, double range) {
 
 	
@@ -232,6 +237,7 @@ void CPianoInstrument::Interpolate(const std::vector<short>& soft, const std::ve
 
 
 // Used past ramp example and ChatGPT to help include the sustain and decay in the envelope function
+// Velocity at which the piano key is struck plays at a range of 0-127 
 void CPianoInstrument::Envelope()
 {
 	double changed_wave;
