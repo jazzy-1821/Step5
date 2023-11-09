@@ -6,11 +6,20 @@ Effects, Compression, Reverb, NoiseGate, and **TENTATIVELY** Flange.
 The Effects class is the base class for all 4 **currently 3 working** effects. "Effects" contains functions and member variables that all effects require (i.e. m_wet, m_dry to represent default wet/dry for all effects, SetWet, SetDry)  
 
 ##### Controllable Effects Send:  
-I thought this deserved its own section.    
-*in a perfect world, once I get this working:*  
-The controllable effects work by reading in wet/dry values and any appropriate thresholds from the score. Even though I made my effects separate from CInstrument, the effects are still read in as if they are instruments. This was simply the easiest way to update the wet/dry/threshold values from the score (as the professor said in the project notes).  
+I thought this deserved its own section.  
+The controllable effects work by reading in wet/dry values and any appropriate thresholds from the score. I copied how instruments are read in from the score so that effects are read in as their own separate thing. The project specifications suggested we read in the effects as instruments, but my code did not seem to like when I tried that.  
 
-*i.e.*  
+*EXAMPLE OF SCORE*  
+<effects>  
+        <!-- Compression -->  
+        <effect type="Compression">  
+            <wet>0.9</wet>  
+            <dry>0.1</dry>  
+            <threshold>0..75</threshold>  
+        </effect>  
+</effects>  
+
+*EXAMPLE OF READING THIS IN SYNTHESIZER.cpp*  
 
 if (effectType.CompareNoCase(L"Compression") == 0 || effectType.CompareNoCase(L"NoiseGate") == 0) {  
     threshold = getAttrAsDouble(L"threshold");  
@@ -36,7 +45,7 @@ else if (effectType.CompareNoCase(L"Reverb") == 0) {
     effects_send[2] = true;  
 }  
 
-Here is an example from Synthesizer.cpp of me updating the wet/dry/threshod (if applicable) values from the score
+Above is an example from Synthesizer::XmlLoadEffect (new method I made) of me updating the wet/dry/threshod (if applicable) values from the score
 
 #### Grading:  
 10 - Component passes audio  
@@ -49,8 +58,8 @@ Grading components I implemented:
 + 10 (Component passes audio)  
 + 20 (1 Effect)  - Reverb
 + 30 (3 Effects) - Compression, Noise Gate, Reverb
-40 (Controllable effects send) **WORK IN PROGRESS**  
-50 (4 Effects) **WORK IN PROGRESS**  
-Current sum: **30 points**
++ 40 (Controllable effects send) 
+50 (4 Effects) **Didn't do 4th effect**  
+Current sum: **40 points/50**
 
-The ___.score is score file for my effects. The ___.wav is the resulting wav file
+The ___.score in the scores folder is score file for my effects. The ___.wav is the resulting wav file
