@@ -78,6 +78,7 @@ void CPianoInstrument::SetNote(CNote* note)
 
 bool CPianoInstrument::LoadWaveFile(const char* filename)
 {
+	m_wave.clear();
 	CDirSoundSource m_file;
 
 	if (!m_file.Open(filename))
@@ -242,11 +243,11 @@ void CPianoInstrument::Envelope()
 		if (!m_pedal) {
 			if (m_time <= m_attack) {
 				// Attack phase
-				m_ramp = 1.0 - exp(-5.0 * m_time / m_attack) * (m_velocity / 127.0);
+				m_ramp = (m_time / m_attack) * (m_velocity / 127.0);
 			}
 			else if (m_time <= m_attack + m_decayTime) {
 				// Decay phase
-				m_ramp = m_sustainLevel + (1.0 - m_sustainLevel) * (1.0 - exp(-5.0 * (m_time - m_attack) / m_decayTime)) *(m_velocity / 127.0);
+				m_ramp = m_sustainLevel + (1.0 - m_sustainLevel) * ((m_time - m_attack) / m_decayTime) *(m_velocity / 127.0);
 			}
 			else {
 				// Sustain phase
@@ -261,7 +262,7 @@ void CPianoInstrument::Envelope()
 		// Continue with the release phase if the pedal is not pressed
 		if (!m_pedal && m_time > (m_duration - m_release)) {
 			// Release phase
-			m_ramp *= exp(-5.0 * (m_time - (m_duration - m_release)) / m_release) * (m_velocity / 127.0);
+			m_ramp *= ((m_time - (m_duration - m_release)) / m_release) * (m_velocity / 127.0);
 		}
 
 		changed_wave = m_wave[i] * m_ramp;

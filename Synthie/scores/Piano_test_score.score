@@ -7,9 +7,9 @@
 		<note measure="2" beat="1" pedal="released" note="CompletePiano/E6s.wav"/>
 		<note measure="2" beat="2" note="CompletePiano/E6s.wav"/>
 		<note measure="2" beat="3" velocity="60" note="CompletePiano/E6s.wav"/>
-		<note measure="2" beat="4" note="CompletePiano/A2s.wav"/>
+		<note measure="2" beat="4" advanceDynamic="struck" note="CompletePiano/A2s.wav"/>
 		<note measure="3" beat="1" velocity="90" note="CompletePiano/A2s.wav"/>
 		<note measure="3" beat="2.5" duration="2.5" velocity="127" note="CompletePiano/A2s.wav"/>
-		<note measure="3" beat="3" note="CompletePiano/A2s.wav"/>
+		<note measure="3" beat="3"advanceDynamic="struck" note="CompletePiano/A2s.wav"/>
 	</instrument>
 </score>
