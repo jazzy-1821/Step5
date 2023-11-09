@@ -9,15 +9,15 @@ The Effects class is the base class for all 4 **currently 3 working** effects. "
 I thought this deserved its own section.  
 The controllable effects work by reading in wet/dry values and any appropriate thresholds from the score. I copied how instruments are read in from the score so that effects are read in as their own separate thing. The project specifications suggested we read in the effects as instruments, but my code did not seem to like when I tried that.  
 
-*EXAMPLE OF SCORE*  
-<effects>  
-        <!-- Compression -->  
-        <effect type="Compression">  
-            <wet>0.9</wet>  
-            <dry>0.1</dry>  
-            <threshold>0..75</threshold>  
-        </effect>  
-</effects>  
+*EXAMPLE OF SCORE: I had to change the formatting of the score here because the ReadMe was deleting some of the stuff because of the shared markdown language*  
+"< effects >  
+________< !-- Compression -- >  
+________< effect type="Compression" >  
+____________< wet>0.9</wet >  
+____________< dry>0.1</dry >  
+____________< threshold>0..75</threshold >  
+________< /effect >  
+< /effects >"  
 
 *EXAMPLE OF READING THIS IN SYNTHESIZER.cpp*  
 
