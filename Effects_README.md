@@ -70,4 +70,4 @@ Grading components I implemented:
 50 (4 Effects) **Didn't do 4th effect**  
 Current sum: **40 points/50**
 
-The Effects_Test.score in the scores folder is score file for my effects. The Effects_Test.wav in the wav folder is the resulting wav file
+The Effects_Test.score in the scores folder is score file for my effects. The Effects_Test.wav in the wav_files folder is the resulting wav file
