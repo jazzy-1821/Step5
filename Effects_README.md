@@ -5,6 +5,14 @@ Effects, Compression, Reverb, NoiseGate, and **TENTATIVELY** Flange.
 
 The Effects class is the base class for all 4 **currently 3 working** effects. "Effects" contains functions and member variables that all effects require (i.e. m_wet, m_dry to represent default wet/dry for all effects, SetWet, SetDry)  
 
+##### The Individual Effects
+
+**Reverb** is a 0.25 seconds delay. I chose to focus my efforts on getting the controllable effects working rather than being able to read in a custom delay time from the score file.  
+
+**Compression** is adjustable, and it reads in the threshold value (0 to 1) from the score file.  
+
+**Noise Gate** is also adjustable, and it also reads in the threshold value (also 0 to 1) from the score file.  
+
 ##### Controllable Effects Send:  
 I thought this deserved its own section.  
 The controllable effects work by reading in wet/dry values and any appropriate thresholds from the score. I copied how instruments are read in from the score so that effects are read in as their own separate thing. The project specifications suggested we read in the effects as instruments, but my code did not seem to like when I tried that.  
@@ -62,4 +70,4 @@ Grading components I implemented:
 50 (4 Effects) **Didn't do 4th effect**  
 Current sum: **40 points/50**
 
-The ___.score in the scores folder is score file for my effects. The ___.wav is the resulting wav file
+The Effects_Test.score in the scores folder is score file for my effects. The Effects_Test.wav in the wav folder is the resulting wav file
