@@ -59,7 +59,7 @@ public:
 private:
 	void XmlLoadScore(IXMLDOMNode* xml);
 	void XmlLoadInstrument(IXMLDOMNode* xml);
-	void XmlLoadNote(IXMLDOMNode* xml, std::wstring& instrument);
+	void XmlLoadNote(IXMLDOMNode* xml, std::wstring& instrument, std::wstring& effect);
 	void AddEffectToSynthesizer(Effects* effect);  // ASHLIN ADDED FOR PROJECT 1
 
 	int		m_channels;

@@ -149,6 +149,7 @@ void CSynthesizer::XmlLoadScore(IXMLDOMNode* xml)
 void CSynthesizer::XmlLoadInstrument(IXMLDOMNode* xml)
 {
     wstring instrument = L"";
+    wstring effect = L"";
 
     // Get a list of all attribute nodes and the
     // length of that list
@@ -176,6 +177,10 @@ void CSynthesizer::XmlLoadInstrument(IXMLDOMNode* xml)
         {
             instrument = value.bstrVal;
         }
+        else if (name == "effect")
+        {
+            effect = value.bstrVal;
+        }
     }
 
 
@@ -189,7 +194,7 @@ void CSynthesizer::XmlLoadInstrument(IXMLDOMNode* xml)
 
         if (name == L"note")
         {
-            XmlLoadNote(node, instrument);
+            XmlLoadNote(node, instrument, effect);
         }
     }
 }
@@ -248,24 +253,27 @@ void CSynthesizer::XmlLoadEffect(IXMLDOMNode* effectNode) {
         m_compression.SetWetCOMP(wet);
         m_compression.SetDryCOMP(dry);
         m_compression.SetThreshCOMP(threshold);
+        effects_send[0] = true;
     }
     else if (effectType.CompareNoCase(L"NoiseGate") == 0) {
         m_noiseGate.SetWetNG(wet);
         m_noiseGate.SetDryNG(dry);
         m_noiseGate.SetThreshNG(threshold);
+        effects_send[1] = true;
     }
     else if (effectType.CompareNoCase(L"Reverb") == 0) {
         m_reverb.SetWetR(wet);
         m_reverb.SetDryR(dry);
         // Reverb does not use a threshold
+        effects_send[2] = true;
     }
 }
 
 
-void CSynthesizer::XmlLoadNote(IXMLDOMNode* xml, std::wstring& instrument)
+void CSynthesizer::XmlLoadNote(IXMLDOMNode* xml, std::wstring& instrument, std::wstring& effect)
 {
     m_notes.push_back(CNote());
-    m_notes.back().XmlLoad(xml, instrument);
+    m_notes.back().XmlLoad(xml, instrument, effect);
 }
 
 
@@ -277,6 +285,10 @@ void CSynthesizer::Start(void)
     m_measure = 0;
     m_beat = 0;
     m_time = 0;
+    effects_send[0] = false;
+    effects_send[1] = false;
+    effects_send[2] = false;
+    effects_send[3] = false;
 }
 
 //! Generate one audio frame
@@ -286,7 +298,7 @@ bool CSynthesizer::Generate(double* frame)
     // Phase 1: Determine if any notes need to be played.
     //
 
-    bool effects_send[] = { false, false, false, false };  // starts as false, set to true for each effect added in score
+    bool effects_send[] = { true, true, true, true };  // starts as false, set to true for each effect added in score
 
     while (m_currentNote < (int)m_notes.size())
     {
@@ -325,20 +337,17 @@ bool CSynthesizer::Generate(double* frame)
         //
         // PROJECT 1: ASHLIN UPDATE EFFECTS FROM SCORE
         //
-        else if (note->Instrument() == L"Compression")
+        else if (note->Effects() == L"Compression")
         {
             effects_send[0] = true;
-            // UPDATE WET/DRY:
         }
-        else if (note->Instrument() == L"NoiseGate")
+        else if (note->Effects() == L"NoiseGate")
         {
             effects_send[1] = true;
-            // UPDATE WET/DRY:
         }
-        else if (note->Instrument() == L"Reverb")
+        else if (note->Effects() == L"Reverb")
         {
             effects_send[2] = true;
-            // UPDATE WET/DRY:
         }
         
 
@@ -414,7 +423,6 @@ bool CSynthesizer::Generate(double* frame)
     // PHASE 3a: add effects
     // 
 
-    //bool effects_send[] = { true, true, true, true };  // for research purposes
     // order =  compress, noisegate, reverb, 4th effect
 
     // ADD LOOP/LOGIC TO UPDATE EFFECTS_SEND

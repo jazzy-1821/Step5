@@ -13,7 +13,7 @@ int readIndex = DELAY_BUFFER_LENGTH / 2; // 0.25 seconds delay
 
 double Reverb::ApplyReverb(double inputSample) {
     // Read the sample from the delay buffer
-    double delayedSample = delayBuffer[readIndex];
+    double delayedSample = delayBuffer[readIndex];  // got some help from bestie ChatGPT on this one
 
     // Mix the delayed sample with the input sample
     double mixedSample = (inputSample + delayedSample) * 0.5;

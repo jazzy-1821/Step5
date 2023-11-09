@@ -14,6 +14,6 @@ class Compression:
     protected:
         double	m_wet_COMP = m_wet;  // giving each effects its own wet/dry now, defaults to Effects default (1,0)
         double	m_dry_COMP = m_dry;
-        double thresh = 0.5;
+        double thresh = 0.85;
 };
 
