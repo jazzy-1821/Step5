@@ -72,7 +72,7 @@ void CPianoInstrument::SetNote(CNote* note)
 
 	m_duration += m_release;
 
-	//Envelope();
+	Envelope();
 	this->GetWavePlayer()->SetSamples(&m_wave[0], (int)m_wave.size());
 }
 
