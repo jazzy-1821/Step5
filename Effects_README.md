@@ -8,7 +8,35 @@ The Effects class is the base class for all 4 **currently 3 working** effects. "
 ##### Controllable Effects Send:  
 I thought this deserved its own section.    
 *in a perfect world, once I get this working:*  
-The controllable effects work by reading in wet/dry values and any appropriate thresholds from the score. Even though I made my effects separate from CInstrument, the effects are still read in as if they are instruments. This was simply the easiest way to update the wet/dry/threshold values from the score (as the professor said in the project notes). 
+The controllable effects work by reading in wet/dry values and any appropriate thresholds from the score. Even though I made my effects separate from CInstrument, the effects are still read in as if they are instruments. This was simply the easiest way to update the wet/dry/threshold values from the score (as the professor said in the project notes).  
+
+*i.e.*  
+
+if (effectType.CompareNoCase(L"Compression") == 0 || effectType.CompareNoCase(L"NoiseGate") == 0) {  
+    threshold = getAttrAsDouble(L"threshold");  
+}  
+
+// Depending on the effect type, apply the values to the synthesizer's members  
+if (effectType.CompareNoCase(L"Compression") == 0) {  
+    m_compression.SetWetCOMP(wet);  
+    m_compression.SetDryCOMP(dry);  
+    m_compression.SetThreshCOMP(threshold);  
+    effects_send[0] = true;  
+}  
+else if (effectType.CompareNoCase(L"NoiseGate") == 0) {  
+    m_noiseGate.SetWetNG(wet);  
+    m_noiseGate.SetDryNG(dry);  
+    m_noiseGate.SetThreshNG(threshold);  
+    effects_send[1] = true;  
+}  
+else if (effectType.CompareNoCase(L"Reverb") == 0) {  
+    m_reverb.SetWetR(wet);  
+    m_reverb.SetDryR(dry);  
+    // Reverb does not use a threshold  
+    effects_send[2] = true;  
+}  
+
+Here is an example from Synthesizer.cpp of me updating the wet/dry/threshod (if applicable) values from the score
 
 #### Grading:  
 10 - Component passes audio  
