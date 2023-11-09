@@ -12,6 +12,7 @@
 #include "PianoFactory.h"
 #include "xmlhelp.h"
 #include <algorithm>
+//#include <tinyxml2.h> // used for XmlLoadEffect
 #pragma comment(lib, "msxml2.lib")
 class CSynthesizer
 {
@@ -52,11 +53,14 @@ public:
 	Compression m_compression;
 	Reverb m_reverb;
 	//Flange m_flange;
+	void XmlLoadEffect(IXMLDOMNode* effectNode);  // // ASHLIN ADDED FOR PROJECT 1
+
 
 private:
 	void XmlLoadScore(IXMLDOMNode* xml);
 	void XmlLoadInstrument(IXMLDOMNode* xml);
 	void XmlLoadNote(IXMLDOMNode* xml, std::wstring& instrument);
+	void AddEffectToSynthesizer(Effects* effect);  // ASHLIN ADDED FOR PROJECT 1
 
 	int		m_channels;
 	double	m_sampleRate;
@@ -70,6 +74,8 @@ private:
 	int m_currentNote;          //!< The current note we are playing
 	int m_measure;              //!< The current measure
 	double m_beat;              //!< The current beat within the measure
+
+	bool effects_send[4];// = { false, false, false, false };  // order: compression, noisegate, reverb  <- initialized to false, false, false, false in XmlLoadInstrument?
 
 	CPianoFactory m_pianoFactory;
 
