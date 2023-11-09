@@ -20,28 +20,22 @@ pianoTestScore.score
     		<note measure="1" beat="1" duration="3" velocity="35" note="CompletePiano/E6s.wav"/>
 		<note measure="1" beat="1" duration="0.5" note="CompletePiano/E6s.wav"/>
 		<note measure="1" beat="3.5" pedal="pressed" note="CompletePiano/C6s.wav"/>
-
 		<note measure="2" beat="1" pedal="released" note="CompletePiano/E6s.wav"/>
 		<note measure="2" beat="2" note="CompletePiano/E6s.wav"/>
 		<note measure="2" beat="3" velocity="60" note="CompletePiano/E6s.wav"/>
 		<note measure="2" beat="4" note="CompletePiano/A2s.wav"/>
-
 		<note measure="3" beat="1" velocity="90" note="CompletePiano/A2s.wav"/>
 		<note measure="3" beat="2.5" duration="2.5" velocity="127" advanceDynamic="struck" note="CompletePiano/D6s.wav"/>
 		<note measure="3" beat="3" note="CompletePiano/E3s.wav"/>
 		<note measure="3" beat="1"  note="CompletePiano/A4s.wav"/>
-
 		<note measure="4" beat="1" velocity="90" note="CompletePiano/A2s.wav"/>
 		<note measure="4" beat="1" velocity="90" note="CompletePiano/C2s.wav"/>
 		<note measure="4" beat="1" velocity="90" note="CompletePiano/E2s.wav"/>
-
 		<note measure="5" beat="2.5" duration="2.5" velocity="127" note="CompletePiano/A2s.wav"/>
 		<note measure="5" beat="3" advanceDynamic="struck" note="CompletePiano/A2s.wav"/>
 		<note measure="5" beat="1" velocity="40" note="CompletePiano/A2s.wav"/>
 		<note measure="5" beat="2.5" duration="2.5" velocity="127" note="CompletePiano/A2s.wav"/>
-
-		</instrument>
-</score>
+		</instrument></score>
 
 twinkle_twinkle_little_star_score.score
 
