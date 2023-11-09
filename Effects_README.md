@@ -58,7 +58,7 @@ Grading components I implemented:
 + 10 (Component passes audio)  
 + 20 (1 Effect)  - Reverb
 + 30 (3 Effects) - Compression, Noise Gate, Reverb
-+ 40 (Controllable effects send) 
++ 40 (Controllable effects send)  
 50 (4 Effects) **Didn't do 4th effect**  
 Current sum: **40 points/50**
 
