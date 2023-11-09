@@ -1,15 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<score bpm="60" beatspermeasure="4">
-	<instrument instrument="PianoInstrument">
-		<note measure="1" beat="1" duration="3" velocity="35" note="CompletePiano/E6s.wav"/>
+<score bpm="120" beatspermeasure="4">
+    <instrument instrument="PianoInstrument">
+    		<note measure="1" beat="1" duration="3" velocity="35" note="CompletePiano/E6s.wav"/>
 		<note measure="1" beat="1" duration="0.5" note="CompletePiano/D6s.wav"/>
 		<note measure="1" beat="3.5" pedal="pressed" note="CompletePiano/C6s.wav"/>
+
 		<note measure="2" beat="1" pedal="released" note="CompletePiano/E6s.wav"/>
 		<note measure="2" beat="2" note="CompletePiano/E6s.wav"/>
 		<note measure="2" beat="3" velocity="60" note="CompletePiano/E6s.wav"/>
-		<note measure="2" beat="4" advanceDynamic="struck" note="CompletePiano/A2s.wav"/>
+		<note measure="2" beat="4"pedal="pressed" note="CompletePiano/A2s.wav"/>
+
 		<note measure="3" beat="1" velocity="90" note="CompletePiano/A2s.wav"/>
-		<note measure="3" beat="2.5" duration="2.5" velocity="127" note="CompletePiano/A2s.wav"/>
-		<note measure="3" beat="3"advanceDynamic="struck" note="CompletePiano/A2s.wav"/>
-	</instrument>
+		<note measure="3" beat="2.5" duration="2.5" velocity="127" note="CompletePiano/D6s.wav"/>
+		<note measure="3" beat="3" advanceDynamic= "struck" note="CompletePiano/E3s.wav"/>
+		<note measure="3 beat="4 pedal="released" note="CompletePiano/A4s.wav"/>
+
+		<note measure="4 beat="1" velocity="90" note="CompletePiano/A2s.wav"/>
+		<note measure="4 beat="1" velocity="90" note="CompletePiano/C2s.wav"/>
+		<note measure="4 beat="1" velocity="90" note="CompletePiano/E2s.wav"/>
+
+		<note measure="5 beat="1 duration="2.5" velocity="127" note="CompletePiano/A2s.wav"/>
+		<note measure="5 beat="2.5" advanceDynamic= "struck" note="CompletePiano/A2s.wav"/>
+		<note measure="5 beat="3 velocity="40" note="CompletePiano/A2s.wav"/>
+		<note measure="5 beat="3.5" duration="2.5" velocity="127" note="CompletePiano/A2s.wav"/>
+
+		<note measure="6" beat="1" duration="3" velocity="90" note="CompletePiano/A2s.wav"/>
+		<note measure="6" beat="1" duration="3" velocity="90" note="CompletePiano/C2s.wav"/>
+		<note measure="6" beat="1" duration="3" velocity="90" note="CompletePiano/E2s.wav"/>
+
+		<note measure="6" beat="2" duration="3" velocity="90" note="CompletePiano/A2s.wav"/>
+		<note measure="6" beat="2" duration="3" velocity="90" note="CompletePiano/C2s.wav"/>
+		<note measure="6" beat="2" duration="3" velocity="90" note="CompletePiano/E2s.wav"/>
+		</instrument>
 </score>

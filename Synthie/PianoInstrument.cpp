@@ -96,14 +96,6 @@ bool CPianoInstrument::LoadWaveFile(const char* filename)
 		m_wave.push_back(frame[0]);
 	}
 
-	/*if (m_interpolatedWave.size() != 0)
-	{
-		for (unsigned int j = 0; j < m_interpolatedWave.size(); j++) {
-			m_wave[j] += m_interpolatedWave[j];
-		}
-		m_interpolatedWave.clear();
-	}*/
-
 	if (m_pedalWave.size() != 0) {
 		for (unsigned int j = 0; j < m_pedalWave.size(); j++) {
 			m_wave[j] += m_pedalWave[j];
