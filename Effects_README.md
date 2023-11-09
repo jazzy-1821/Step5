@@ -69,5 +69,7 @@ Grading components I implemented:
 + 40 (Controllable effects send)  
 50 (4 Effects) **Didn't do 4th effect**  
 Current sum: **40 points/50**
+Plus the group grading portion, that is 80/100 points for miss Ashlin please :)  
 
-The Effects_Test.score in the scores folder is score file for my effects. The Effects_Test.wav in the wav_files folder is the resulting wav file
+The Effects_Test.score in the scores folder is score file for my effects. The Effects_Test.wav in the wav_files folder is the resulting wav file.  
+I have also included NOEffects_Test.wav which is the same score/chord progression but without the effects added. This way, you can compare the 2 wav files' sounds.
