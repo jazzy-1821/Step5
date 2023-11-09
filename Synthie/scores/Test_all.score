@@ -4,22 +4,22 @@
     <effects>
         <!-- Compression -->
         <effect type="Compression">
-            <wet>0.8</wet>
-            <dry>0.2</dry>
-            <threshold>0.45</threshold>
+            <wet>0.9</wet>
+            <dry>0.1</dry>
+            <threshold>0..75</threshold>
         </effect>
        
         <!-- NoiseGate -->
         <effect type="NoiseGate">
-            <wet>0.8</wet>
-            <dry>0.2</dry>
-            <threshold>0.085</threshold>
+            <wet>0.5</wet>
+            <dry>0.5</dry>
+            <threshold>0.05</threshold>
         </effect>
        
         <!-- Reverb -->
         <effect type="Reverb">
-            <wet>1.0</wet>
-            <dry>0.0</dry>
+            <wet>0.9</wet>
+            <dry>0.1</dry>
             <!-- Note: Reverb does not have a threshold -->
         </effect>
     </effects>
@@ -49,35 +49,134 @@
         <note measure="4" beat="4" duration="1" note="G4"/>
     </instrument>
     <instrument instrument="PianoInstrument">
-    		<note measure="5" beat="1" duration="3" velocity="35" note="CompletePiano/E6s.wav"/>
-		<note measure="5" beat="1" duration="0.5" note="CompletePiano/D6s.wav"/>
-		<note measure="5" beat="3.5" pedal="pressed" note="CompletePiano/C6s.wav"/>
+    	<note measure="5" beat="1" duration="3" velocity="35" note="CompletePiano/E3s.wav"/>
+    	<note measure="5" beat="1" duration="0.5" note="CompletePiano/E3s.wav"/>
+    	<note measure="5" beat="3.5" pedal="pressed" note="CompletePiano/A2s.wav"/>
+    	<note measure="5" beat="1" duration="0.5" note="CompletePiano/E3s.wav"/>
 
-		<note measure="6" beat="1" pedal="released" note="CompletePiano/E6s.wav"/>
-		<note measure="6" beat="2" note="CompletePiano/E6s.wav"/>
-		<note measure="6" beat="3" velocity="60" note="CompletePiano/E6s.wav"/>
-		<note measure="6" beat="4" note="CompletePiano/A2s.wav"/>
+    	<note measure="6" beat="1" pedal="released" note="CompletePiano/E4s.wav"/>
+    	<note measure="6" beat="2" note="CompletePiano/E3s.wav"/>
+    	<note measure="6" beat="3" velocity="60" note="CompletePiano/E4s.wav"/>
+    	<note measure="6" beat="4" note="CompletePiano/E3s.wav"/>
 
-		<note measure="7" beat="1" velocity="90" note="CompletePiano/A2s.wav"/>
-		<note measure="7" beat="2.5" duration="2.5" velocity="127" note="CompletePiano/D6s.wav"/>
-		<note measure="7" beat="3" note="CompletePiano/E3s.wav"/>
-		<note measure="7" beat="1"  note="CompletePiano/A4s.wav"/>
+    	<note measure="7" beat="1" velocity="90" note="CompletePiano/C6s.wav"/>
+    	<note measure="7" beat="2.5" duration="2.5" velocity="127" note="CompletePiano/D6s.wav"/>
+    	<note measure="7" beat="3" note="CompletePiano/E3s.wav"/>
+    	<note measure="7" beat="1"  note="CompletePiano/A4s.wav"/>
 
-		<note measure="8" beat="1" velocity="90" note="CompletePiano/A2s.wav"/>
-		<note measure="8" beat="1" velocity="90" note="CompletePiano/C2s.wav"/>
-		<note measure="8" beat="1" velocity="90" note="CompletePiano/E2s.wav"/>
+    	<note measure="8" beat="1" velocity="90" note="CompletePiano/E3s.wav"/>
+    	<note measure="8" beat="1" velocity="90" note="CompletePiano/G2s.wav"/>
+    	<note measure="8" beat="1" velocity="90" note="CompletePiano/B2s.wav"/>
 
-		<note measure="9" beat="2.5" duration="2.5" velocity="127" note="CompletePiano/A2s.wav"/>
-		<note measure="9" beat="3" note="CompletePiano/A2s.wav"/>
-		<note measure="9" beat="1" velocity="40" note="CompletePiano/A2s.wav"/>
-		<note measure="9" beat="2.5" duration="2.5" velocity="127" note="CompletePiano/A2s.wav"/>
+    	<note measure="9" beat="2.5" duration="2.5" velocity="127" note="CompletePiano/C6s.wav"/>
+    	<note measure="9" beat="3" note="CompletePiano/D6s.wav"/>
+    	<note measure="9" beat="1" velocity="40" note="CompletePiano/A4s.wav"/>
+    	<note measure="9" beat="2.5" duration="2.5" velocity="127" note="CompletePiano/A4s.wav"/>
 
-		<note measure="10" beat="1" duration="3" velocity="90" note="CompletePiano/A2s.wav"/>
-		<note measure="10" beat="1" duration="3" velocity="90" note="CompletePiano/C2s.wav"/>
-		<note measure="10" beat="1" duration="3" velocity="90" note="CompletePiano/E2s.wav"/>
+    	<note measure="10" beat="1" duration="3" velocity="90" note="CompletePiano/E3s.wav"/>
+    	<note measure="10" beat="1" duration="3" velocity="90" note="CompletePiano/G2s.wav"/>
+    	<note measure="10" beat="1" duration="3" velocity="90" note="CompletePiano/B2s.wav"/>
 
-		<note measure="10" beat="2" duration="3" velocity="90" note="CompletePiano/A2s.wav"/>
-		<note measure="10" beat="2" duration="3" velocity="90" note="CompletePiano/C2s.wav"/>
-		<note measure="10" beat="2" duration="3" velocity="90" note="CompletePiano/E2s.wav"/>
-		</instrument>
+    	<note measure="10" beat="2" duration="3" velocity="90" note="CompletePiano/E3s.wav"/>
+    	<note measure="10" beat="2" duration="3" velocity="90" note="CompletePiano/G2s.wav"/>
+    	<note measure="10" beat="2" duration="3" velocity="90" note="CompletePiano/B2s.wav"/>
+    
+	<!-- Measure 11 -->
+    	<note measure="11" beat="1" duration="0.5" velocity="90" note="CompletePiano/E4s.wav"/>
+    	<note measure="11" beat="2" duration="0.5" velocity="90" note="CompletePiano/D4s.wav"/>
+    	<note measure="11" beat="3" duration="0.5" velocity="90" note="CompletePiano/E4s.wav"/>
+
+    	<!-- Measure 12 -->
+    	<note measure="12" beat="1" duration="0.5" velocity="90" note="CompletePiano/D4s.wav"/>
+    	<note measure="12" beat="2" duration="0.5" velocity="90" note="CompletePiano/E4s.wav"/>
+    	<note measure="12" beat="3" duration="0.5" velocity="90" note="CompletePiano/G4s.wav"/>
+
+    	<!-- Measure 13 -->
+    	<note measure="13" beat="1" duration="0.5" velocity="90" note="CompletePiano/G4s.wav"/>
+    	<note measure="13" beat="2" duration="0.5" velocity="90" note="CompletePiano/F4s.wav"/>
+    	<note measure="13" beat="3" duration="0.5" velocity="90" note="CompletePiano/E4s.wav"/>
+
+    	<!-- Measure 14 -->
+    	<note measure="14" beat="1" duration="0.5" velocity="90" note="CompletePiano/D4s.wav"/>
+    	<note measure="14" beat="2" duration="0.5" velocity="90" note="CompletePiano/C4s.wav"/>
+    	<note measure="14" beat="3" duration="0.5" velocity="90" note="CompletePiano/A3s.wav"/>
+
+    	<!-- Measure 15 -->
+    	<note measure="15" beat="1" duration="0.5" velocity="90" note="CompletePiano/E4s.wav"/>
+    	<note measure="15" beat="2" duration="0.5" velocity="90" note="CompletePiano/A3s.wav"/>
+    	<note measure="15" beat="3" duration="0.5" velocity="90" note="CompletePiano/B3s.wav"/>
+
+    	<!-- Measure 16 -->
+    	<note measure="16" beat="1" duration="0.5" velocity="90" note="CompletePiano/D4s.wav"/>
+    	<note measure="16" beat="2" duration="0.5" velocity="90" note="CompletePiano/E4s.wav"/>
+    	<note measure="16" beat="3" duration="0.5" velocity="90" note="CompletePiano/G4s.wav"/>
+
+    	<!-- Measure 17 -->
+    	<note measure="17" beat="1" duration="0.5" velocity="90" note="CompletePiano/G4s.wav"/>
+    	note measure="17" beat="2" duration="0.5" velocity="90" note="CompletePiano/F4s.wav"/>
+    	<note measure="17" beat="3" duration="0.5" velocity="90" note="CompletePiano/E4s.wav"/>
+
+    	<!-- Measure 18 -->
+    	<note measure="18" beat="1" duration="0.5" velocity="90" note="CompletePiano/D4s.wav"/>
+    	<note measure="18" beat="2" duration="0.5" velocity="90" note="CompletePiano/C4s.wav"/>
+    	<note measure="18" beat="3" duration="0.5" velocity="90" note="CompletePiano/A3s.wav"/>
+
+    	<!-- Measure 19 -->
+    	<note measure="19" beat="1" duration="0.5" velocity="90" note="CompletePiano/B3s.wav"/>
+    	<note measure="19" beat="2" duration="0.5" velocity="90" note="CompletePiano/A3s.wav"/>
+    	<note measure="19" beat="3" duration="0.5" velocity="90" note="CompletePiano/G3s.wav"/>
+
+    	<!-- Measure 20 -->
+    	<note measure="20" beat="1" duration="0.5" velocity="90" note="CompletePiano/E4s.wav"/>
+    	<note measure="20" beat="2" duration="0.5" velocity="90" note="CompletePiano/E4s.wav"/>
+    	<note measure="20" beat="3" duration="0.5" velocity="90" note="CompletePiano/E4s.wav"/>
+
+	<!-- Measure 21 -->
+    	<note measure="21" beat="1" duration="1" velocity="90" note="CompletePiano/C4s.wav"/>
+    	<note measure="21" beat="2" duration="1" velocity="90" note="CompletePiano/E4s.wav"/>
+    	<note measure="21" beat="3" duration="1" velocity="90" note="CompletePiano/G4s.wav"/>
+
+    	<!-- Measure 22 -->
+    	<note measure="22" beat="1" duration="1" velocity="90" note="CompletePiano/D4s.wav"/>
+    	<note measure="22" beat="2" duration="1" velocity="90" note="CompletePiano/F4s.wav"/>
+    	<note measure="22" beat="3" duration="1" velocity="90" note="CompletePiano/A4s.wav"/>
+
+    	<!-- Measure 23 -->
+    	<note measure="23" beat="1" duration="1" velocity="90" note="CompletePiano/E4s.wav"/>
+    	<note measure="23" beat="2" duration="1" velocity="90" note="CompletePiano/G4s.wav"/>
+    	<note measure="23" beat="3" duration="1" velocity="90" note="CompletePiano/B4s.wav"/>
+
+    	<!-- Measure 24 -->
+    	<note measure="24" beat="1" duration="1" velocity="90" note="CompletePiano/G4s.wav"/>
+    	<note measure="24" beat="2" duration="1" velocity="90" note="CompletePiano/B4s.wav"/>
+    	<note measure="24" beat="3" duration="1" velocity="90" note="CompletePiano/D5s.wav"/>
+
+    	<!-- Measure 25 -->
+    	<note measure="25" beat="1" duration="1" velocity="90" note="CompletePiano/A4s.wav"/>
+    	<note measure="25" beat="2" duration="1" velocity="90" note="CompletePiano/C5s.wav"/>
+    	<note measure="25" beat="3" duration="1" velocity="90" note="CompletePiano/E5s.wav"/>
+
+    	<!-- Measure 26 -->
+    	<note measure="26" beat="1" duration="1" velocity="90" note="CompletePiano/B4s.wav"/>
+    	<note measure="26" beat="2" duration="1" velocity="90" note="CompletePiano/D5s.wav"/>
+    	<note measure="26" beat="3" duration="1" velocity="90" note="CompletePiano/F5s.wav"/>
+
+    	<!-- Measure 27 -->
+    	<note measure="27" beat="1" duration="1" velocity="90" note="CompletePiano/C5s.wav"/>
+    	<note measure="27" beat="2" duration="1" velocity="90" note="CompletePiano/E5s.wav"/>
+    	<note measure="27" beat="3" duration="1" velocity="90" note="CompletePiano/G5s.wav"/>
+
+    	<!-- Measure 28 -->
+    	<note measure="28" beat="1" duration="1" velocity="90" note="CompletePiano/D5s.wav"/>
+    	<note measure="28" beat="2" duration="1" velocity="90" note="CompletePiano/F5s.wav"/>
+    	<note measure="28" beat="3" duration="1" velocity="90" note="CompletePiano/A5s.wav"/>
+    </instrument>
+These notes represent a simplified rendition of "Für Elise" by Beethoven for measures 11 through 20.
+
+
+
+
+
+
+
 </score>
